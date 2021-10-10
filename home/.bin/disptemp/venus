@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+ddccontrol -r 0x10 dev:/dev/i2c-9 -w 95 & xsct 7000
+notify-send Venus "Brightness 95% & Temperature 7000K" -i /home/ngc/.config/openbox/scripts/icons/venus.png -t 5000
+

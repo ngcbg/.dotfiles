@@ -1,0 +1,6 @@
+Web browser,exo-open --launch WebBrowser,web-browser-symbolic
+File manager,exo-open --launch FileManager,system-file-manager-symbolic
+Terminal,uxterm,utilities-terminal-symbolic
+@search,,3,3,150,20,2,left,top,auto,#000000 0,Type to Search
+^sep()
+

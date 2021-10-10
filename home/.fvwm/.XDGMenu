@@ -1,0 +1,449 @@
+DestroyMenu "FvwmXfce Settings Manager"
+AddToMenu "FvwmXfce Settings Manager" "Xfce Settings Manager" Title
++ "Personal%/usr/share/icons/gnome/24x24/categories/preferences-desktop-personal.png%" Popup "Personal"
++ "Hardware%/usr/share/icons/gnome/24x24/categories/preferences-desktop-peripherals.png%" Popup "Hardware"
++ "System%/usr/share/icons/gnome/24x24/categories/applications-system.png%" Popup "System"
++ "Other%/usr/share/icons/gnome/24x24/categories/applications-other.png%" Popup "Other"
++ "Advanced Network Configuration%/usr/share/icons/gnome/24x24/categories/preferences-system-network.png%" Exec exec nm-connection-editor
++ "Customize Look and Feel%/usr/share/icons/gnome/24x24/apps/preferences-desktop-theme.png%" Exec exec lxappearance
++ "Desktop Preferences%/usr/share/icons/gnome/24x24/places/user-desktop.png%" Exec exec pcmanfm --desktop-pref
++ "Menu Editor%/home/ngc/.fvwm/icons/24x24-menulibre.png%" Exec exec /usr/bin/menulibre
++ "Monitor Settings%/usr/share/icons/gnome/24x24/devices/video-display.png%" Exec exec lxrandr
++ "NVIDIA X Server Settings%/home/ngc/.fvwm/icons/24x24-nvidia-settings.png%" Exec exec /usr/bin/nvidia-settings
++ "Orage preferences%/home/ngc/.fvwm/icons/24x24-xfcalendar.png%" Exec exec orage -p
++ "Preferred Applications%/usr/share/icons/gnome/24x24/categories/preferences-desktop.png%" Exec exec libfm-pref-apps
++ "Print Settings%/usr/share/icons/gnome/24x24/devices/printer.png%" Exec exec system-config-printer
++ "Privilege granting%/home/ngc/.fvwm/icons/24x24-gksu.png%" Exec exec gksu-properties
++ "Qt5 Settings%/usr/share/icons/gnome/24x24/apps/preferences-desktop-theme.png%" Exec exec qt5ct
++ "Settings Editor%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.editor.png%" Exec exec xfce4-settings-editor
++ "YAD settings%/usr/share/icons/hicolor/24x24/apps/yad.png%" Exec exec yad-settings
+
+DestroyMenu "Personal"
+AddToMenu "Personal" "Personal" Title
++ "About Me%/usr/share/icons/hicolor/24x24/apps/mugshot.svg%" Exec exec /usr/bin/mugshot
++ "Appearance%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.appearance.png%" Exec exec xfce4-appearance-settings
++ "Clipboard Manager Settings%/usr/share/icons/hicolor/24x24/apps/xfce4-clipman-plugin.png%" Exec exec xfce4-clipman-settings
++ "Conkyzen%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec am-conkyzen
++ "Desktop%/usr/share/icons/hicolor/24x24/apps/org.xfce.xfdesktop.png%" Exec exec xfdesktop-settings
++ "File Manager Settings%/home/ngc/.fvwm/icons/24x24-org.xfce.thunar.png%" Exec exec thunar-settings
++ "Kvantum Manager%/home/ngc/.fvwm/icons/24x24-kvantum.png%" Exec exec kvantummanager
++ "Notifications%/home/ngc/.fvwm/icons/24x24-org.xfce.notification.png%" Exec exec xfce4-notifyd-config
++ "Panel%/usr/share/icons/hicolor/24x24/apps/org.xfce.panel.png%" Exec exec xfce4-panel --preferences
++ "Panel Profiles%/home/ngc/.fvwm/icons/24x24-org.xfce.PanelProfiles.png%" Exec exec xfce4-panel-profiles
++ "Theme Configuration%/home/ngc/.fvwm/icons/24x24-gtk-theme-config.png%" Exec exec gtk-theme-config
++ "Themix/Oomox theme designer%/home/ngc/.fvwm/icons/24x24-com.github.themix_project.Oomox.png%" Exec exec oomox-gui
++ "Window Manager%/home/ngc/.fvwm/icons/24x24-org.xfce.xfwm4.png%" Exec exec xfwm4-settings
++ "Window Manager Tweaks%/home/ngc/.fvwm/icons/24x24-org.xfce.xfwm4-tweaks.png%" Exec exec xfwm4-tweaks-settings
++ "Workspaces%/home/ngc/.fvwm/icons/24x24-org.xfce.workspaces.png%" Exec exec xfwm4-workspace-settings
++ "Xfce Terminal Settings%/usr/share/icons/hicolor/24x24/apps/org.xfce.terminal-settings.png%" Exec exec xfce4-terminal --preferences
+
+DestroyMenu "Hardware"
+AddToMenu "Hardware" "Hardware" Title
++ "Bluetooth%/usr/share/icons/hicolor/24x24/apps/bluetooth.png%" Exec exec blueberry
++ "Color Profiles%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.color.png%" Exec exec xfce4-color-settings
++ "Display%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.display.png%" Exec exec xfce4-display-settings
++ "Keyboard%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.keyboard.png%" Exec exec xfce4-keyboard-settings
++ "Mouse and Touchpad%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.mouse.png%" Exec exec xfce4-mouse-settings
++ "Power Manager%/usr/share/icons/hicolor/24x24/apps/org.xfce.powermanager.png%" Exec exec xfce4-power-manager-settings
++ "PulseAudio Volume Control%/usr/share/icons/gnome/24x24/apps/multimedia-volume-control.png%" Exec exec pavucontrol
++ "Removable Drives and Media%/usr/share/icons/hicolor/24x24/apps/org.xfce.volman.png%" Exec exec thunar-volman-settings
+
+DestroyMenu "System"
+AddToMenu "System" "System" Title
++ "Accessibility%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.accessibility.png%" Exec exec xfce4-accessibility-settings
++ "Adblock%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec termite -e "pkexec hblock" --hold
++ "Add/Remove Software%/usr/share/icons/gnome/24x24/apps/system-software-install.png%" Exec exec pamac-manager 
++ "ArcoLinux Betterlockscreen%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec /usr/local/bin/arcolinux-betterlockscreen
++ "Arcolinux Desktop Trasher%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec /usr/local/bin/arcolinux-desktop-trasher
++ "Arcolinux Tweak Tool%/home/ngc/.fvwm/icons/24x24-arcolinux-tweak-tool.png%" Exec exec /usr/local/bin/arcolinux-tweak-tool
++ "Arcolinux Welcome%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec /usr/local/bin/arcolinux-welcome-app
++ "Default Applications%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.default-applications.png%" Exec exec xfce4-mime-settings
++ "Disks%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec gnome-disks
++ "Firewall Configuration%/home/ngc/.fvwm/icons/24x24-gufw.png%" Exec exec gufw
++ "Fix Hardcoded Icons%/home/ngc/.fvwm/icons/24x24-apport.png%" Exec exec bash -c 'zenity --info --title="Fixing all hardcoded path icons" --text="An empty window means that all icons were already fixed.\n$(pkexec hardcode-fixer)" --width=500 --height=300'
++ "GParted%/usr/share/icons/hicolor/24x24/apps/gparted.png%" Exec exec /usr/bin/gparted
++ "Grub Customizer%/usr/share/icons/hicolor/24x24/apps/grub-customizer.svg%" Exec exec grub-customizer
++ "LightDM GTK+ Greeter settings%/usr/share/icons/hicolor/24x24/apps/lightdm-gtk-greeter-settings.png%" Exec exec lightdm-gtk-greeter-settings-pkexec
++ "Quick System Info%/usr/share/icons/gnome/24x24/devices/audio-card.png%" Exec exec termite -e "/usr/bin/inxi -F" --hold
++ "Session and Startup%/usr/share/icons/hicolor/24x24/apps/org.xfce.session.png%" Exec exec xfce4-session-settings
++ "System Profiler and Benchmark%/home/ngc/.fvwm/icons/24x24-hardinfo.png%" Exec exec hardinfo
++ "USB Image Writer%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec mintstick -m iso
++ "dconf Editor%/usr/share/icons/hicolor/24x24/apps/ca.desrt.dconf-editor.png%" Exec exec dconf-editor
+
+DestroyMenu "Other"
+AddToMenu "Other" "Other" Title
++ "Settings Editor%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.editor.png%" Exec exec xfce4-settings-editor
+
+DestroyMenu "FvwmApplications"
+AddToMenu "FvwmApplications" "Applications" Title
++ "Development%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "Development"
++ "Education%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "Education"
++ "Games%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "Games"
++ "Graphics%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "Graphics"
++ "Internet%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "Internet"
++ "Multimedia%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "Multimedia"
++ "Office%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "Office"
++ "Settingsmenu%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "Settingsmenu"
++ "System%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "System"
++ "Utilities%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "Utilities"
++ "Wine%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "Wine"
++ "Applications%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "Applications"
+
+DestroyMenu "Development"
+AddToMenu "Development" "Development" Title
++ "Atom%/usr/share/icons/hicolor/24x24/apps/atom.png%" Exec exec env ATOM_DISABLE_SHELLING_OUT_FOR_ENVIRONMENT=false /usr/bin/atom 
++ "CMake%/home/ngc/.fvwm/icons/24x24-CMakeSetup.png%" Exec exec cmake-gui 
++ "Geany%/home/ngc/.fvwm/icons/24x24-geany.png%" Exec exec geany 
++ "Meld%/home/ngc/.fvwm/icons/24x24-org.gnome.meld.png%" Exec exec meld 
++ "Qt4 Assistant%/home/ngc/.fvwm/icons/24x24-assistant-qt4.png%" Exec exec assistant-qt4
++ "Qt4 Designer%/home/ngc/.fvwm/icons/24x24-designer-qt4.png%" Exec exec designer-qt4
++ "Qt4 Linguist%/home/ngc/.fvwm/icons/24x24-linguist-qt4.png%" Exec exec linguist-qt4
++ "Qt4 QDbusViewer%/home/ngc/.fvwm/icons/24x24-qdbusviewer-qt4.png%" Exec exec qdbusviewer-qt4
++ "Sublime Text%/home/ngc/.fvwm/icons/24x24-sublime-text.png%" Exec exec subl 
+
+DestroyMenu "Education"
+AddToMenu "Education" "Education" Title
++ "Mathematics%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "Education/Mathematics"
++ "Science%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "Education/Science"
+
+DestroyMenu "Education/Mathematics"
+AddToMenu "Education/Mathematics" "Education/Mathematics" Title
++ "LibreOffice Math%/usr/share/icons/hicolor/24x24/apps/libreoffice-math.png%" Exec exec libreoffice --math 
+
+DestroyMenu "Education/Science"
+AddToMenu "Education/Science" "Education/Science" Title
++ "LibreOffice Math%/usr/share/icons/hicolor/24x24/apps/libreoffice-math.png%" Exec exec libreoffice --math 
+
+DestroyMenu "Games"
+AddToMenu "Games" "Games" Title
++ "Board%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "Games/Board"
++ "DOSBox Game Launcher%/home/ngc/.fvwm/icons/24x24-dbgl.png%" Exec exec dbgl
++ "Dosbox%/home/ngc/.fvwm/icons/24x24-dosbox.png%" Exec exec dosbox
++ "Lutris%/usr/share/icons/hicolor/24x24/apps/lutris.png%" Exec exec lutris 
++ "Steam (Runtime)%/home/ngc/.fvwm/icons/24x24-steam.png%" Exec exec /usr/bin/steam-runtime 
+
+DestroyMenu "Games/Board"
+AddToMenu "Games/Board" "Games/Board" Title
++ "Chess%/home/ngc/.fvwm/icons/24x24-org.gnome.Chess.png%" Exec exec gnome-chess
++ "Xboard%/home/ngc/.fvwm/icons/24x24-xboard.png%" Exec exec xboard
+
+DestroyMenu "Graphics"
+AddToMenu "Graphics" "Graphics" Title
++ "Document Scanner%/home/ngc/.fvwm/icons/24x24-org.gnome.SimpleScan.png%" Exec exec simple-scan
++ "Document Viewer%/home/ngc/.fvwm/icons/24x24-org.gnome.Evince.png%" Exec exec evince 
++ "GNU Image Manipulation Program%/usr/share/icons/hicolor/24x24/apps/gimp.png%" Exec exec gimp-2.10 
++ "Gpick%/home/ngc/.fvwm/icons/24x24-gpick.png%" Exec exec gpick 
++ "Inkscape%/usr/share/icons/hicolor/24x24/apps/org.inkscape.Inkscape.png%" Exec exec inkscape 
++ "LibreOffice Draw%/usr/share/icons/hicolor/24x24/apps/libreoffice-draw.png%" Exec exec libreoffice --draw 
++ "Peek%/home/ngc/.fvwm/icons/24x24-com.uploadedlobster.peek.png%" Exec exec peek
++ "Ristretto Image Viewer%/usr/share/icons/hicolor/24x24/apps/org.xfce.ristretto.png%" Exec exec ristretto 
++ "nomacs%/home/ngc/.fvwm/icons/24x24-org.nomacs.ImageLounge.png%" Exec exec nomacs 
++ "" Nop
+
+DestroyMenu "Internet"
+AddToMenu "Internet" "Internet" Title
++ "Chromium%/usr/share/icons/hicolor/24x24/apps/chromium.png%" Exec exec /usr/bin/chromium 
++ "Discord%/home/ngc/.fvwm/icons/24x24-discord.png%" Exec exec /usr/bin/discord
++ "Dropbox%/home/ngc/.fvwm/icons/24x24-dropbox.png%" Exec exec dropbox
++ "FileZilla%/home/ngc/.fvwm/icons/24x24-filezilla.png%" Exec exec filezilla
++ "Firefox%/usr/share/icons/hicolor/24x24/apps/firefox.png%" Exec exec /usr/lib/firefox/firefox 
++ "Mail Reader%/usr/share/icons/hicolor/24x24/apps/org.xfce.mailreader.png%" Exec exec exo-open --launch MailReader 
++ "Remmina%/usr/share/icons/hicolor/24x24/apps/org.remmina.Remmina.png%" Exec exec remmina-file-wrapper 
++ "Skype%/home/ngc/.fvwm/icons/24x24-skypeforlinux.png%" Exec exec /usr/bin/skypeforlinux 
++ "Steam (Runtime)%/home/ngc/.fvwm/icons/24x24-steam.png%" Exec exec /usr/bin/steam-runtime 
++ "TeamViewer%/usr/share/icons/hicolor/24x24/apps/TeamViewer.png%" Exec exec /opt/teamviewer/tv_bin/script/teamviewer
++ "Thunderbird%/usr/share/icons/hicolor/24x24/apps/thunderbird.png%" Exec exec /usr/lib/thunderbird/thunderbird 
++ "Web Browser%/usr/share/icons/hicolor/24x24/apps/org.xfce.webbrowser.png%" Exec exec exo-open --launch WebBrowser 
++ "Wireshark%/usr/share/icons/hicolor/24x24/apps/wireshark.png%" Exec exec wireshark 
++ "Zenmap%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec zenmap 
++ "Zenmap (as root)%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec /usr/share/zenmap/su-to-zenmap.sh 
++ "qBittorrent%/home/ngc/.fvwm/icons/24x24-qbittorrent.png%" Exec exec qbittorrent 
++ "vimb%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec vimb 
++ "" Nop
+
+DestroyMenu "Multimedia"
+AddToMenu "Multimedia" "Multimedia" Title
++ "Audacious%/home/ngc/.fvwm/icons/24x24-audacious.png%" Exec exec audacious 
++ "OBS Studio%/home/ngc/.fvwm/icons/24x24-com.obsproject.Studio.png%" Exec exec obs
++ "OpenShot Video Editor%/home/ngc/.fvwm/icons/24x24-openshot-qt.png%" Exec exec openshot-qt 
++ "Peek%/home/ngc/.fvwm/icons/24x24-com.uploadedlobster.peek.png%" Exec exec peek
++ "Pragha%/usr/share/icons/hicolor/24x24/apps/pragha.png%" Exec exec pragha 
++ "PulseAudio Equalizer%/usr/share/icons/gnome/24x24/apps/multimedia-volume-control.png%" Exec exec pulseaudio-equalizer-gtk
++ "Qt V4L2 video capture utility%/usr/share/icons/hicolor/24x24/apps/qvidcap.png%" Exec exec qvidcap
++ "SMPlayer%/home/ngc/.fvwm/icons/24x24-smplayer.png%" Exec exec smplayer 
++ "SimpleScreenRecorder%/usr/share/icons/hicolor/24x24/apps/simplescreenrecorder.png%" Exec exec simplescreenrecorder --logfile
++ "Spotify%/home/ngc/.fvwm/icons/24x24-spotify-client.png%" Exec exec spotify 
++ "VLC media player%/home/ngc/.fvwm/icons/24x24-vlc.png%" Exec exec /usr/bin/vlc --started-from-file 
++ "Xfburn%/usr/share/icons/hicolor/24x24/stock/media/stock_xfburn.png%" Exec exec xfburn
++ "guvcview%/home/ngc/.fvwm/icons/24x24-guvcview.png%" Exec exec guvcview
++ "mpv Media Player%/home/ngc/.fvwm/icons/24x24-mpv.png%" Exec exec mpv --player-operation-mode=pseudo-gui -- 
++ "" Nop
+
+DestroyMenu "Office"
+AddToMenu "Office" "Office" Title
++ "Calibre%/home/ngc/.fvwm/icons/24x24-calibre-gui.png%" Exec exec calibre --detach 
++ "Dictionary%/usr/share/icons/hicolor/24x24/apps/org.xfce.Dictionary.png%" Exec exec xfce4-dict
++ "Document Viewer%/home/ngc/.fvwm/icons/24x24-org.gnome.Evince.png%" Exec exec evince 
++ "E-book editor%/home/ngc/.fvwm/icons/24x24-calibre-ebook-edit.png%" Exec exec ebook-edit --detach 
++ "E-book viewer%/home/ngc/.fvwm/icons/24x24-calibre-viewer.png%" Exec exec ebook-viewer --detach 
++ "Foxit Reader%/home/ngc/.local/share/icons/hicolor/24x24/apps/FoxitReader.png%" Exec exec /home/ngc/opt/foxitsoftware/foxitreader/FoxitReader.sh 
++ "LRF viewer%/home/ngc/.fvwm/icons/24x24-calibre-viewer.png%" Exec exec lrfviewer 
++ "LibreOffice%/usr/share/icons/hicolor/24x24/apps/libreoffice-startcenter.png%" Exec exec libreoffice 
++ "LibreOffice Base%/usr/share/icons/hicolor/24x24/apps/libreoffice-base.png%" Exec exec libreoffice --base 
++ "LibreOffice Calc%/usr/share/icons/hicolor/24x24/apps/libreoffice-calc.png%" Exec exec libreoffice --calc 
++ "LibreOffice Draw%/usr/share/icons/hicolor/24x24/apps/libreoffice-draw.png%" Exec exec libreoffice --draw 
++ "LibreOffice Impress%/usr/share/icons/hicolor/24x24/apps/libreoffice-impress.png%" Exec exec libreoffice --impress 
++ "LibreOffice Math%/usr/share/icons/hicolor/24x24/apps/libreoffice-math.png%" Exec exec libreoffice --math 
++ "LibreOffice Writer%/usr/share/icons/hicolor/24x24/apps/libreoffice-writer.png%" Exec exec libreoffice --writer 
++ "Orage Calendar%/home/ngc/.fvwm/icons/24x24-xfcalendar.png%" Exec exec orage
++ "Orage Globaltime%/home/ngc/.fvwm/icons/24x24-orage_globaltime.png%" Exec exec globaltime
++ "" Nop
+
+DestroyMenu "Settingsmenu"
+AddToMenu "Settingsmenu" "Settingsmenu" Title
++ "About Me%/usr/share/icons/hicolor/24x24/apps/mugshot.svg%" Exec exec /usr/bin/mugshot
++ "Accessibility%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.accessibility.png%" Exec exec xfce4-accessibility-settings
++ "Adblock%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec termite -e "pkexec hblock" --hold
++ "Add/Remove Software%/usr/share/icons/gnome/24x24/apps/system-software-install.png%" Exec exec pamac-manager 
++ "Advanced Network Configuration%/usr/share/icons/gnome/24x24/categories/preferences-system-network.png%" Exec exec nm-connection-editor
++ "Appearance%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.appearance.png%" Exec exec xfce4-appearance-settings
++ "ArcoLinux Betterlockscreen%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec /usr/local/bin/arcolinux-betterlockscreen
++ "Arcolinux Desktop Trasher%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec /usr/local/bin/arcolinux-desktop-trasher
++ "Arcolinux Tweak Tool%/home/ngc/.fvwm/icons/24x24-arcolinux-tweak-tool.png%" Exec exec /usr/local/bin/arcolinux-tweak-tool
++ "Arcolinux Welcome%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec /usr/local/bin/arcolinux-welcome-app
++ "Bluetooth%/usr/share/icons/hicolor/24x24/apps/bluetooth.png%" Exec exec blueberry
++ "Clipboard Manager Settings%/usr/share/icons/hicolor/24x24/apps/xfce4-clipman-plugin.png%" Exec exec xfce4-clipman-settings
++ "Color Profiles%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.color.png%" Exec exec xfce4-color-settings
++ "Conkyzen%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec am-conkyzen
++ "Customize Look and Feel%/usr/share/icons/gnome/24x24/apps/preferences-desktop-theme.png%" Exec exec lxappearance
++ "Default Applications%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.default-applications.png%" Exec exec xfce4-mime-settings
++ "Desktop%/usr/share/icons/hicolor/24x24/apps/org.xfce.xfdesktop.png%" Exec exec xfdesktop-settings
++ "Desktop Preferences%/usr/share/icons/gnome/24x24/places/user-desktop.png%" Exec exec pcmanfm --desktop-pref
++ "Disks%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec gnome-disks
++ "Display%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.display.png%" Exec exec xfce4-display-settings
++ "File Manager Settings%/home/ngc/.fvwm/icons/24x24-org.xfce.thunar.png%" Exec exec thunar-settings
++ "Firewall Configuration%/home/ngc/.fvwm/icons/24x24-gufw.png%" Exec exec gufw
++ "Fix Hardcoded Icons%/home/ngc/.fvwm/icons/24x24-apport.png%" Exec exec bash -c 'zenity --info --title="Fixing all hardcoded path icons" --text="An empty window means that all icons were already fixed.\n$(pkexec hardcode-fixer)" --width=500 --height=300'
++ "GParted%/usr/share/icons/hicolor/24x24/apps/gparted.png%" Exec exec /usr/bin/gparted
++ "Grub Customizer%/usr/share/icons/hicolor/24x24/apps/grub-customizer.svg%" Exec exec grub-customizer
++ "Keyboard%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.keyboard.png%" Exec exec xfce4-keyboard-settings
++ "Kvantum Manager%/home/ngc/.fvwm/icons/24x24-kvantum.png%" Exec exec kvantummanager
++ "LightDM GTK+ Greeter settings%/usr/share/icons/hicolor/24x24/apps/lightdm-gtk-greeter-settings.png%" Exec exec lightdm-gtk-greeter-settings-pkexec
++ "Menu Editor%/home/ngc/.fvwm/icons/24x24-menulibre.png%" Exec exec /usr/bin/menulibre
++ "Monitor Settings%/usr/share/icons/gnome/24x24/devices/video-display.png%" Exec exec lxrandr
++ "Mouse and Touchpad%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.mouse.png%" Exec exec xfce4-mouse-settings
++ "NVIDIA X Server Settings%/home/ngc/.fvwm/icons/24x24-nvidia-settings.png%" Exec exec /usr/bin/nvidia-settings
++ "Notifications%/home/ngc/.fvwm/icons/24x24-org.xfce.notification.png%" Exec exec xfce4-notifyd-config
++ "Orage preferences%/home/ngc/.fvwm/icons/24x24-xfcalendar.png%" Exec exec orage -p
++ "Panel%/usr/share/icons/hicolor/24x24/apps/org.xfce.panel.png%" Exec exec xfce4-panel --preferences
++ "Panel Profiles%/home/ngc/.fvwm/icons/24x24-org.xfce.PanelProfiles.png%" Exec exec xfce4-panel-profiles
++ "Power Manager%/usr/share/icons/hicolor/24x24/apps/org.xfce.powermanager.png%" Exec exec xfce4-power-manager-settings
++ "Preferred Applications%/usr/share/icons/gnome/24x24/categories/preferences-desktop.png%" Exec exec libfm-pref-apps
++ "Print Settings%/usr/share/icons/gnome/24x24/devices/printer.png%" Exec exec system-config-printer
++ "Privilege granting%/home/ngc/.fvwm/icons/24x24-gksu.png%" Exec exec gksu-properties
++ "PulseAudio Volume Control%/usr/share/icons/gnome/24x24/apps/multimedia-volume-control.png%" Exec exec pavucontrol
++ "Qt5 Settings%/usr/share/icons/gnome/24x24/apps/preferences-desktop-theme.png%" Exec exec qt5ct
++ "Quick System Info%/usr/share/icons/gnome/24x24/devices/audio-card.png%" Exec exec termite -e "/usr/bin/inxi -F" --hold
++ "Removable Drives and Media%/usr/share/icons/hicolor/24x24/apps/org.xfce.volman.png%" Exec exec thunar-volman-settings
++ "Session and Startup%/usr/share/icons/hicolor/24x24/apps/org.xfce.session.png%" Exec exec xfce4-session-settings
++ "Settings Editor%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.editor.png%" Exec exec xfce4-settings-editor
++ "Settings Manager%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.manager.png%" Exec exec xfce4-settings-manager
++ "System Profiler and Benchmark%/home/ngc/.fvwm/icons/24x24-hardinfo.png%" Exec exec hardinfo
++ "Theme Configuration%/home/ngc/.fvwm/icons/24x24-gtk-theme-config.png%" Exec exec gtk-theme-config
++ "Themix/Oomox theme designer%/home/ngc/.fvwm/icons/24x24-com.github.themix_project.Oomox.png%" Exec exec oomox-gui
++ "USB Image Writer%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec mintstick -m iso
++ "Window Manager%/home/ngc/.fvwm/icons/24x24-org.xfce.xfwm4.png%" Exec exec xfwm4-settings
++ "Window Manager Tweaks%/home/ngc/.fvwm/icons/24x24-org.xfce.xfwm4-tweaks.png%" Exec exec xfwm4-tweaks-settings
++ "Workspaces%/home/ngc/.fvwm/icons/24x24-org.xfce.workspaces.png%" Exec exec xfwm4-workspace-settings
++ "Xfce Terminal Settings%/usr/share/icons/hicolor/24x24/apps/org.xfce.terminal-settings.png%" Exec exec xfce4-terminal --preferences
++ "YAD settings%/usr/share/icons/hicolor/24x24/apps/yad.png%" Exec exec yad-settings
++ "dconf Editor%/usr/share/icons/hicolor/24x24/apps/ca.desrt.dconf-editor.png%" Exec exec dconf-editor
+
+DestroyMenu "System"
+AddToMenu "System" "System" Title
++ "Add/Remove Software%/usr/share/icons/gnome/24x24/apps/system-software-install.png%" Exec exec pamac-manager 
++ "Avahi Zeroconf Browser%/usr/share/icons/gnome/24x24/devices/network-wired.png%" Exec exec /usr/bin/avahi-discover
++ "Bulk Rename%/home/ngc/.fvwm/icons/24x24-org.xfce.thunar.png%" Exec exec thunar --bulk-rename 
++ "Conky Toggle%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec conky-toggle
++ "Cool Retro Term%/home/ngc/.fvwm/icons/24x24-cool-retro-term.png%" Exec exec cool-retro-term
++ "Disk Usage Analyzer%/home/ngc/.fvwm/icons/24x24-org.gnome.baobab.png%" Exec exec baobab 
++ "File Manager PCManFM%/usr/share/icons/gnome/24x24/apps/system-file-manager.png%" Exec exec pcmanfm 
++ "Grsync%/home/ngc/.fvwm/icons/24x24-grsync.png%" Exec exec /usr/bin/grsync -i 
++ "LightDM GTK+ Greeter settings%/usr/share/icons/hicolor/24x24/apps/lightdm-gtk-greeter-settings.png%" Exec exec lightdm-gtk-greeter-settings-pkexec
++ "Log Out%/usr/share/icons/hicolor/24x24/actions/xfsm-logout.png%" Exec exec xfce4-session-logout
++ "Manage Printing%/home/ngc/.fvwm/icons/24x24-cups.png%" Exec exec /usr/bin/xdg-open http://localhost:631/
++ "Oracle VM VirtualBox%/home/ngc/.fvwm/icons/24x24-virtualbox.png%" Exec exec VirtualBox 
++ "Parental Controls%/home/ngc/.fvwm/icons/24x24-org.freedesktop.MalcontentControl.png%" Exec exec malcontent-control
++ "Print Settings%/usr/share/icons/gnome/24x24/devices/printer.png%" Exec exec system-config-printer
++ "Psensor%/usr/share/icons/hicolor/24x24/apps/psensor.png%" Exec exec psensor
++ "Sensor Viewer%/usr/share/icons/hicolor/24x24/apps/xfce-sensors.png%" Exec exec xfce4-sensors
++ "Software%/home/ngc/.fvwm/icons/24x24-org.gnome.Software.png%" Exec exec gnome-software 
++ "Task Manager%/home/ngc/.fvwm/icons/24x24-org.xfce.taskmanager.png%" Exec exec xfce4-taskmanager
++ "Termite%/usr/share/icons/gnome/24x24/apps/utilities-terminal.png%" Exec exec termite
++ "Thunar File Manager%/home/ngc/.fvwm/icons/24x24-org.xfce.thunar.png%" Exec exec thunar 
++ "Timeshift%/usr/share/icons/hicolor/24x24/apps/timeshift.png%" Exec exec timeshift-launcher
++ "USB Image Writer%/usr/share/icons/gnome/24x24/actions/system-run.png%" Exec exec mintstick -m iso
++ "USB Stick Formatter%/usr/share/icons/gnome/24x24/actions/system-run.png%" Exec exec mintstick -m format
++ "UXTerm%/home/ngc/.fvwm/icons/24x24-xterm-color_48x48.png%" Exec exec uxterm
++ "XTerm%/home/ngc/.fvwm/icons/24x24-xterm-color_48x48.png%" Exec exec xterm
++ "Xfce Terminal%/usr/share/icons/hicolor/24x24/apps/org.xfce.terminal.png%" Exec exec xfce4-terminal
++ "Zenmonitor%/usr/share/icons/gnome/24x24/apps/utilities-system-monitor.png%" Exec exec /usr/bin/zenmonitor
++ "fish%/home/ngc/.fvwm/icons/24x24-fish.png%" Exec exec xterm -e  fish
++ "jgmenu%/home/ngc/.fvwm/icons/24x24-jgmenu.png%" Exec exec jgmenu_run
++ "nnn%/home/ngc/.fvwm/icons/24x24-nnn.png%" Exec exec xterm -e  nnn
++ "ranger%/usr/share/icons/gnome/24x24/apps/utilities-terminal.png%" Exec exec xterm -e  ranger
++ "urxvt%/usr/share/icons/gnome/24x24/apps/utilities-terminal.png%" Exec exec urxvt
++ "" Nop
+
+DestroyMenu "Utilities"
+AddToMenu "Utilities" "Utilities" Title
++ "About Xfce%/home/ngc/.fvwm/icons/24x24-org.xfce.about.png%" Exec exec xfce4-about
++ "Application Finder%/usr/share/icons/hicolor/24x24/apps/org.xfce.appfinder.png%" Exec exec xfce4-appfinder
++ "Archive Manager%/home/ngc/.fvwm/icons/24x24-org.gnome.ArchiveManager.png%" Exec exec file-roller 
++ "ArcoLinux Betterlockscreen%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec /usr/local/bin/arcolinux-betterlockscreen
++ "Arcolinux Tweak Tool%/home/ngc/.fvwm/icons/24x24-arcolinux-tweak-tool.png%" Exec exec /usr/local/bin/arcolinux-tweak-tool
++ "Atom%/usr/share/icons/hicolor/24x24/apps/atom.png%" Exec exec env ATOM_DISABLE_SHELLING_OUT_FOR_ENVIRONMENT=false /usr/bin/atom 
++ "Bulk Rename%/home/ngc/.fvwm/icons/24x24-org.xfce.thunar.png%" Exec exec thunar --bulk-rename 
++ "Catfish File Search%/home/ngc/.fvwm/icons/24x24-org.xfce.catfish.png%" Exec exec /usr/bin/catfish 
++ "Character Map%/usr/share/icons/gnome/24x24/apps/accessories-character-map.png%" Exec exec gucharmap
++ "Clipboard Manager%/usr/share/icons/hicolor/24x24/apps/xfce4-clipman-plugin.png%" Exec exec xfce4-clipman
++ "Conky Toggle%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec conky-toggle
++ "Conkyzen%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec am-conkyzen
++ "File Manager%/usr/share/icons/hicolor/24x24/apps/org.xfce.filemanager.png%" Exec exec exo-open --launch FileManager 
++ "File Manager PCManFM%/usr/share/icons/gnome/24x24/apps/system-file-manager.png%" Exec exec pcmanfm 
++ "Font Manager%/home/ngc/.fvwm/icons/24x24-org.gnome.FontManager.png%" Exec exec font-manager 
++ "Font Viewer%/home/ngc/.fvwm/icons/24x24-org.gnome.FontViewer.png%" Exec exec /usr/libexec/font-manager/font-viewer 
++ "Galculator%/home/ngc/.fvwm/icons/24x24-galculator.png%" Exec exec galculator
++ "Geany%/home/ngc/.fvwm/icons/24x24-geany.png%" Exec exec geany 
++ "KeePassXC%/home/ngc/.fvwm/icons/24x24-keepassxc.png%" Exec exec keepassxc 
++ "Kvantum Manager%/home/ngc/.fvwm/icons/24x24-kvantum.png%" Exec exec kvantummanager
++ "LightDM GTK+ Greeter settings%/usr/share/icons/hicolor/24x24/apps/lightdm-gtk-greeter-settings.png%" Exec exec lightdm-gtk-greeter-settings-pkexec
++ "Menu Editor%/home/ngc/.fvwm/icons/24x24-menulibre.png%" Exec exec /usr/bin/menulibre
++ "Notes%/usr/share/icons/hicolor/24x24/apps/xfce4-notes-plugin.png%" Exec exec xfce4-notes
++ "Orage Globaltime%/home/ngc/.fvwm/icons/24x24-orage_globaltime.png%" Exec exec globaltime
++ "Plank%/usr/share/icons/hicolor/24x24/apps/plank.svg%" Exec exec plank
++ "PlayOnLinux%/home/ngc/.fvwm/icons/24x24-playonlinux.png%" Exec exec playonlinux 
++ "Run Program...%/usr/share/icons/hicolor/24x24/apps/org.xfce.appfinder.png%" Exec exec xfce4-appfinder --collapsed
++ "Screenkey%/usr/share/icons/gnome/24x24/apps/preferences-desktop-keyboard-shortcuts.png%" Exec exec screenkey
++ "Screenshot%/home/ngc/.fvwm/icons/24x24-org.gnome.Screenshot.png%" Exec exec gnome-screenshot --interactive
++ "Screenshot%/usr/share/icons/hicolor/24x24/apps/org.xfce.screenshooter.png%" Exec exec xfce4-screenshooter
++ "Sensor Viewer%/usr/share/icons/hicolor/24x24/apps/xfce-sensors.png%" Exec exec xfce4-sensors
++ "Software Token%/home/ngc/.fvwm/icons/24x24-stoken-gui.png%" Exec exec stoken-gui
++ "Software Token (small)%/home/ngc/.fvwm/icons/24x24-stoken-gui.png%" Exec exec stoken-gui --small
++ "Sublime Text%/home/ngc/.fvwm/icons/24x24-sublime-text.png%" Exec exec subl 
++ "Task Manager%/home/ngc/.fvwm/icons/24x24-org.xfce.taskmanager.png%" Exec exec xfce4-taskmanager
++ "Terminal Emulator%/usr/share/icons/hicolor/24x24/apps/org.xfce.terminalemulator.png%" Exec exec exo-open --launch TerminalEmulator
++ "Thunar File Manager%/home/ngc/.fvwm/icons/24x24-org.xfce.thunar.png%" Exec exec thunar 
++ "USB Image Writer%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec mintstick -m iso
++ "USB Stick Formatter%/usr/share/icons/hicolor/24x24/apps/mintstick.png%" Exec exec mintstick -m format
++ "Variety%/home/ngc/.fvwm/icons/24x24-variety.png%" Exec exec variety 
++ "Vim%/home/ngc/.fvwm/icons/24x24-gvim.png%" Exec exec xterm -e  vim 
++ "Xfburn%/usr/share/icons/hicolor/24x24/stock/media/stock_xfburn.png%" Exec exec xfburn
++ "balenaEtcher%/home/ngc/.fvwm/icons/24x24-balena-etcher-electron.png%" Exec exec /opt/balenaEtcher/balena-etcher-electron 
++ "" Nop
+
+DestroyMenu "Wine"
+AddToMenu "Wine" "Wine" Title
++ "Programs%/usr/share/icons/gnome/24x24/places/folder.png%" Popup "Wine/Programs"
+
+DestroyMenu "Wine/Programs"
+AddToMenu "Wine/Programs" "Wine/Programs" Title
++ "Battle.net%/usr/share/icons/gnome/24x24/places/folder.png%" Popup "Wine/Programs/Battle.net"
++ "Steam%/usr/share/icons/gnome/24x24/places/folder.png%" Popup "Wine/Programs/Steam"
+
+DestroyMenu "Wine/Programs/Battle.net"
+AddToMenu "Wine/Programs/Battle.net" "Wine/Programs/Battle.net" Title
++ "Battle.net%/home/ngc/.local/share/icons/hicolor/24x24/apps/56B4_Battle.net Launcher.0.png%" Exec exec env WINEPREFIX="/home/ngc/.wine" wine C:\\\\windows\\\\command\\\\start.exe /Unix /home/ngc/.wine/dosdevices/c:/ProgramData/Microsoft/Windows/Start\\ Menu/Programs/Battle.net/Battle.net.lnk
+
+DestroyMenu "Wine/Programs/Steam"
+AddToMenu "Wine/Programs/Steam" "Wine/Programs/Steam" Title
++ "Steam%/home/ngc/.fvwm/icons/24x24-10B4_steam.0.png%" Exec exec env WINEPREFIX="/home/ngc/.local/share/lutris/runners/winesteam/prefix64" wine /home/ubuntu/buildbot/runners/wine/lutris-5.7-11-x86_64/bin/wine /Unix /home/ngc/.local/share/lutris/runners/winesteam/prefix64/dosdevices/c:/ProgramData/Microsoft/Windows/Start\\ Menu/Programs/Steam/Steam.lnk
+
+DestroyMenu "Applications"
+AddToMenu "Applications" "Applications" Title
++ "gmrun%/home/ngc/.fvwm/icons/24x24-gmrun.png%" Exec exec gmrun
+
+DestroyMenu "FvwmXfce Applications"
+AddToMenu "FvwmXfce Applications" "Xfce Applications" Title
++ "Run Program...%/usr/share/icons/hicolor/24x24/apps/org.xfce.appfinder.png%" Exec exec xfce4-appfinder --collapsed
++ "" Nop
++ "Terminal Emulator%/usr/share/icons/hicolor/24x24/apps/org.xfce.terminalemulator.png%" Exec exec exo-open --launch TerminalEmulator
++ "File Manager%/usr/share/icons/hicolor/24x24/apps/org.xfce.filemanager.png%" Exec exec exo-open --launch FileManager 
++ "Mail Reader%/usr/share/icons/hicolor/24x24/apps/org.xfce.mailreader.png%" Exec exec exo-open --launch MailReader 
++ "Web Browser%/usr/share/icons/hicolor/24x24/apps/org.xfce.webbrowser.png%" Exec exec exo-open --launch WebBrowser 
++ "" Nop
++ "Settings%/usr/share/icons/gnome/24x24/categories/preferences-desktop.png%" Popup "Settings"
++ "" Nop
++ "" Nop
++ "About Xfce%/home/ngc/.fvwm/icons/24x24-org.xfce.about.png%" Exec exec xfce4-about
++ "Log Out%/usr/share/icons/hicolor/24x24/actions/xfsm-logout.png%" Exec exec xfce4-session-logout
+
+DestroyMenu "Settings"
+AddToMenu "Settings" "Settings" Title
++ "Settings Manager%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.manager.png%" Exec exec xfce4-settings-manager
++ "" Nop
++ "About Me%/usr/share/icons/hicolor/24x24/apps/mugshot.svg%" Exec exec /usr/bin/mugshot
++ "Accessibility%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.accessibility.png%" Exec exec xfce4-accessibility-settings
++ "Adblock%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec termite -e "pkexec hblock" --hold
++ "Add/Remove Software%/usr/share/icons/gnome/24x24/apps/system-software-install.png%" Exec exec pamac-manager 
++ "Advanced Network Configuration%/usr/share/icons/gnome/24x24/categories/preferences-system-network.png%" Exec exec nm-connection-editor
++ "Appearance%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.appearance.png%" Exec exec xfce4-appearance-settings
++ "ArcoLinux Betterlockscreen%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec /usr/local/bin/arcolinux-betterlockscreen
++ "Arcolinux Desktop Trasher%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec /usr/local/bin/arcolinux-desktop-trasher
++ "Arcolinux Tweak Tool%/home/ngc/.fvwm/icons/24x24-arcolinux-tweak-tool.png%" Exec exec /usr/local/bin/arcolinux-tweak-tool
++ "Arcolinux Welcome%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec /usr/local/bin/arcolinux-welcome-app
++ "Bluetooth%/usr/share/icons/hicolor/24x24/apps/bluetooth.png%" Exec exec blueberry
++ "Clipboard Manager Settings%/usr/share/icons/hicolor/24x24/apps/xfce4-clipman-plugin.png%" Exec exec xfce4-clipman-settings
++ "Color Profiles%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.color.png%" Exec exec xfce4-color-settings
++ "Conkyzen%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec am-conkyzen
++ "Customize Look and Feel%/usr/share/icons/gnome/24x24/apps/preferences-desktop-theme.png%" Exec exec lxappearance
++ "Default Applications%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.default-applications.png%" Exec exec xfce4-mime-settings
++ "Desktop%/usr/share/icons/hicolor/24x24/apps/org.xfce.xfdesktop.png%" Exec exec xfdesktop-settings
++ "Desktop Preferences%/usr/share/icons/gnome/24x24/places/user-desktop.png%" Exec exec pcmanfm --desktop-pref
++ "Disks%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec gnome-disks
++ "Display%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.display.png%" Exec exec xfce4-display-settings
++ "File Manager Settings%/home/ngc/.fvwm/icons/24x24-org.xfce.thunar.png%" Exec exec thunar-settings
++ "Firewall Configuration%/home/ngc/.fvwm/icons/24x24-gufw.png%" Exec exec gufw
++ "Fix Hardcoded Icons%/home/ngc/.fvwm/icons/24x24-apport.png%" Exec exec bash -c 'zenity --info --title="Fixing all hardcoded path icons" --text="An empty window means that all icons were already fixed.\n$(pkexec hardcode-fixer)" --width=500 --height=300'
++ "GParted%/usr/share/icons/hicolor/24x24/apps/gparted.png%" Exec exec /usr/bin/gparted
++ "Grub Customizer%/usr/share/icons/hicolor/24x24/apps/grub-customizer.svg%" Exec exec grub-customizer
++ "Keyboard%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.keyboard.png%" Exec exec xfce4-keyboard-settings
++ "Kvantum Manager%/home/ngc/.fvwm/icons/24x24-kvantum.png%" Exec exec kvantummanager
++ "LightDM GTK+ Greeter settings%/usr/share/icons/hicolor/24x24/apps/lightdm-gtk-greeter-settings.png%" Exec exec lightdm-gtk-greeter-settings-pkexec
++ "Menu Editor%/home/ngc/.fvwm/icons/24x24-menulibre.png%" Exec exec /usr/bin/menulibre
++ "Monitor Settings%/usr/share/icons/gnome/24x24/devices/video-display.png%" Exec exec lxrandr
++ "Mouse and Touchpad%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.mouse.png%" Exec exec xfce4-mouse-settings
++ "NVIDIA X Server Settings%/home/ngc/.fvwm/icons/24x24-nvidia-settings.png%" Exec exec /usr/bin/nvidia-settings
++ "Notifications%/home/ngc/.fvwm/icons/24x24-org.xfce.notification.png%" Exec exec xfce4-notifyd-config
++ "Orage preferences%/home/ngc/.fvwm/icons/24x24-xfcalendar.png%" Exec exec orage -p
++ "Panel%/usr/share/icons/hicolor/24x24/apps/org.xfce.panel.png%" Exec exec xfce4-panel --preferences
++ "Panel Profiles%/home/ngc/.fvwm/icons/24x24-org.xfce.PanelProfiles.png%" Exec exec xfce4-panel-profiles
++ "Power Manager%/usr/share/icons/hicolor/24x24/apps/org.xfce.powermanager.png%" Exec exec xfce4-power-manager-settings
++ "Preferred Applications%/usr/share/icons/gnome/24x24/categories/preferences-desktop.png%" Exec exec libfm-pref-apps
++ "Print Settings%/usr/share/icons/gnome/24x24/devices/printer.png%" Exec exec system-config-printer
++ "Privilege granting%/home/ngc/.fvwm/icons/24x24-gksu.png%" Exec exec gksu-properties
++ "PulseAudio Volume Control%/usr/share/icons/gnome/24x24/apps/multimedia-volume-control.png%" Exec exec pavucontrol
++ "Qt5 Settings%/usr/share/icons/gnome/24x24/apps/preferences-desktop-theme.png%" Exec exec qt5ct
++ "Quick System Info%/usr/share/icons/gnome/24x24/devices/audio-card.png%" Exec exec termite -e "/usr/bin/inxi -F" --hold
++ "Removable Drives and Media%/usr/share/icons/hicolor/24x24/apps/org.xfce.volman.png%" Exec exec thunar-volman-settings
++ "Session and Startup%/usr/share/icons/hicolor/24x24/apps/org.xfce.session.png%" Exec exec xfce4-session-settings
++ "Settings Editor%/usr/share/icons/hicolor/24x24/apps/org.xfce.settings.editor.png%" Exec exec xfce4-settings-editor
++ "System Profiler and Benchmark%/home/ngc/.fvwm/icons/24x24-hardinfo.png%" Exec exec hardinfo
++ "Theme Configuration%/home/ngc/.fvwm/icons/24x24-gtk-theme-config.png%" Exec exec gtk-theme-config
++ "Themix/Oomox theme designer%/home/ngc/.fvwm/icons/24x24-com.github.themix_project.Oomox.png%" Exec exec oomox-gui
++ "USB Image Writer%/usr/share/icons/gnome/24x24/categories/gnome-applications.png%" Exec exec mintstick -m iso
++ "Window Manager%/home/ngc/.fvwm/icons/24x24-org.xfce.xfwm4.png%" Exec exec xfwm4-settings
++ "Window Manager Tweaks%/home/ngc/.fvwm/icons/24x24-org.xfce.xfwm4-tweaks.png%" Exec exec xfwm4-tweaks-settings
++ "Workspaces%/home/ngc/.fvwm/icons/24x24-org.xfce.workspaces.png%" Exec exec xfwm4-workspace-settings
++ "Xfce Terminal Settings%/usr/share/icons/hicolor/24x24/apps/org.xfce.terminal-settings.png%" Exec exec xfce4-terminal --preferences
++ "YAD settings%/usr/share/icons/hicolor/24x24/apps/yad.png%" Exec exec yad-settings
++ "dconf Editor%/usr/share/icons/hicolor/24x24/apps/ca.desrt.dconf-editor.png%" Exec exec dconf-editor
+
+DestroyMenu "XDGMenu"
+AddToMenu "XDGMenu" "XDGMenu" Title
++ "Applications%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "FvwmApplications"
++ "Xfce Applications%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "FvwmXfce Applications"
++ "Xfce Settings Manager%/usr/share/icons/gnome/24x24/places/gnome-fs-directory.png%" Popup "FvwmXfce Settings Manager"
++ "" Nop
++ "$[gt.Regenerate]%/usr/share/icons/gnome/24x24/apps/system-software-update.png%" PipeRead `fvwm-menu-desktop`
++ "$[gt.Configure]%/usr/share/icons/gnome/24x24/apps/system-software-update.png%" Module FvwmPerl -l fvwm-menu-desktop-config.fpl

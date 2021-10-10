@@ -1,0 +1,176 @@
+#################################################################
+# ADDITIONAL KEYBOARD BINDINGS FOR CWM
+#################################################################
+
+#Rofi
+super + r
+    rofi -show run
+
+#alt + Tab    
+#rofi -modi window -config ~/.config/rofi/config -show window    
+
+#Thunar
+super + e
+    thunar
+    
+#PCmanFM    
+super + alt + e
+	pcmanfm
+
+#arcolinux-logout
+super + x
+    arcolinux-logout
+
+#Quit CWM
+super + z
+    pkill cwm
+
+#Urxvt
+super + t
+    urxvt
+
+#Pavucontrol
+super + v
+    pavucontrol
+
+#Kitty
+super + Return
+    kitty
+
+#Xkill
+super + Escape
+    xkill
+
+#Keyboard dependent
+#Kitty
+super + KP_Enter
+	kitty
+
+#dmenu
+super + w
+	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+
+#reload sxhkd:
+super + shift + s
+	pkill -USR1 -x sxhkd
+
+#Firefox
+ctrl + alt + f
+    firefox
+
+#Reload CWM conf???
+ctrl + alt + r
+    reload
+    
+#Picom Toggle
+ctrl + alt + p
+    ~/.config/cwm/scripts/picom-toggle.sh    
+
+#Xfce4-appfinder
+alt + F3
+    xfce4-appfinder
+    
+#Catfish
+alt + F2
+    catfish
+    
+#xfce4-terminal dropdown
+F12
+    xfce4-terminal --drop-down
+   
+#Xcfe4-TaskManager
+ctrl + shift + Escape
+    xfce4-taskmanager
+
+#Scrot
+Print
+    scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
+
+#screeenshooter
+ctrl + Print
+     xfce4-screenshooter
+
+#Gnome-Screenshot
+ctrl + shift + Print
+     gnome-screenshot -i
+     
+     #Raises volume
+XF86AudioRaiseVolume
+    amixer set Master 10%+
+
+#Lowers volume
+XF86AudioLowerVolume
+    amixer set Master 10%-
+
+#Mute
+XF86AudioMute
+    amixer -D pulse set Master 1+ toggle
+
+#Playerctl works for Pragha, Spotify and others
+#Delete the line for playerctl if you want to use mpc
+#and replace it with the corresponding code
+#mpc works for e.g.ncmpcpp
+#mpc toggle
+#mpc next
+#mpc prev
+#mpc stop
+
+#PLAY
+XF86AudioPlay
+    playerctl play-pause
+
+#Next
+XF86AudioNext
+    playerctl next
+
+#previous
+XF86AudioPrev
+    playerctl previous
+
+#Stop
+XF86AudioStop
+    playerctl stop
+
+#Brightness up
+XF86MonBrightnessUp
+    xbacklight -inc 10
+
+#Brightness down
+XF86MonBrightnessDown
+    xbacklight -dec 10
+
+#Decrease volume with 10% and send notification     
+ctrl + alt + u
+pamixer -d 10 && notify-send -t 400 (pamixer --get-volume)
+
+#Increase volume with 10% and send notification
+ctrl + alt + i    
+pamixer -i 10 && notify-send -t 400 (pamixer --get-volume)
+
+#Wallpaper trash
+#alt + shift + t
+#   variety -t && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+#Wallpaper next
+#alt + shift + n
+#   variety -n && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+#Wallpaper previous
+#alt + shift + p
+#   variety -p && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+#Wallpaper favorite
+#alt + shift + f
+#   variety -f && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+#Wallpaper update
+#alt + shift + u
+#   wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+
+#Picom Toggle
+ctrl + alt + o
+    ~/.bin/picom-toggle.sh
+
+# Xcompmgr togle
+ctrl + alt + i
+    ~/.bin/xcompmgr.sh

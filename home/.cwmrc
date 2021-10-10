@@ -1,0 +1,313 @@
+####################################################################
+# CWM Configuration File
+####################################################################
+
+####################################################################
+# Layout Settings
+####################################################################
+# Gaps - Leave room at the top or bottom for status bar
+#If using one polybar 40 10 10 10 - if using a second polybar set to 40 40 10 10
+gap 40 20 15 15
+
+# Font
+fontname "Noto Sans Mono:size=12"
+
+# Width of border around window
+borderwidth 2
+
+# Border Colors
+#color   activeborder		"#6790EB"
+#color 	urgencyborder 		"#dd2727"
+#color   inactiveborder		"#686868"	
+#color 	groupborder			"#d18034"
+#color 	ungroupborder		"#d13436"
+
+color inactiveborder AntiqueWhile
+color activeborder LightCoral
+color groupborder "#01a252"
+color urgencyborder "#3d9751"
+color selfont "#CCCCFF"
+color font "#222222"
+
+# Command Menu - Apps that will be in the right click command menu
+color menubg 	"#404552"
+color menufg 	"#6790EB"
+#color menufg 	"CCCCFF"
+#color menubg 	"222222"
+color font      "#cccccc"
+color selfont	"#ffffff"
+
+# Size of keyboard window movement - pixel
+moveamount 10
+
+# Distance to snap to adjacent edge
+snapdist 5
+
+# Percent of screen master should occupy with htile
+htile 49
+
+#Percent of screen master should occupy with vtile
+vtile 49
+
+# Applications that cwm will ignore for groups and borders
+ignore dmenu
+ignore polybar
+ignore tint2
+ignore conky
+ignore rofi
+
+# Add the applications you want to appear in the right click menu
+command Thunar		 			thunar
+command Pcmanfm		 			pcmanfm
+command KiTTY 					kitty
+command Urxvt					urxvt
+command Firefox 				firefox
+command Chrome     				chromium
+command Geany	      			geany 
+
+command Logout			 		arcolinux-logout
+command Terminate				pkill cwm
+
+####################################################################
+# Keyboard Keybinding
+####################################################################
+# KEYBINDINGS:
+# 4 = mod (windows key)
+# S = shift
+# C = control
+# M = meta (alt)
+####################################################################
+# Remove all default keybindings
+unbind-key all
+
+# Close Window
+bind-key 4-q window-close
+
+# Hide window
+bind-key M-d window-hide
+
+# Lower window's focus
+bind-key M-Down window-lower
+bind-key M-Up window-raise
+
+# Cycle through current windows
+bind-key 4-Tab window-rcycle-ingroup
+
+# Make current window fullscreen
+bind-key 4-f window-fullscreen
+
+# Maximize current window
+bind-key M-Return window-maximize
+
+# Restart cwm, reloading configuration
+bind-key 4S-r restart
+
+# Start rofi
+#bind-key 4-r /usr/bin/rofi -show run
+
+# Volume down 10 of 100
+#bind-key S-d pamixer -d 10 && notify-send (pamixer --get-volume) 
+# Volume up 10 of 100
+#bind-key S-i pamixer -i 10 && notify-send (pamixer --get-volume)
+    
+####################################################################
+# Autogroup & Group Keybinding
+#####################################################################
+# Automatically add new windows to the current group
+sticky yes
+
+#Autogroup definitions
+#autogroup 1 
+#autogroup 2 
+#autogroup 3 
+#autogroup 4 
+#autogroup 5 
+#autogroup 6 
+#autogroup 7 
+#autogroup 8 
+#autogroup 9 
+
+# Show only windows for group $N
+bind-key 4-1 group-only-1
+bind-key 4-2 group-only-2
+bind-key 4-3 group-only-3
+bind-key 4-4 group-only-4
+bind-key 4-5 group-only-5
+bind-key 4-6 group-only-6
+bind-key 4-7 group-only-7
+bind-key 4-8 group-only-8
+bind-key 4-9 group-only-9
+
+# Move window to group $N
+bind-key 4S-1 window-movetogroup-1
+bind-key 4S-2 window-movetogroup-2
+bind-key 4S-3 window-movetogroup-3
+bind-key 4S-4 window-movetogroup-4
+bind-key 4S-5 window-movetogroup-5
+bind-key 4S-6 window-movetogroup-6
+bind-key 4S-7 window-movetogroup-7
+bind-key 4S-8 window-movetogroup-8
+bind-key 4S-9 window-movetogroup-9
+
+# Toggle visibility of group $N
+bind-key 4C-1 group-toggle-1
+bind-key 4C-2 group-toggle-2
+bind-key 4C-3 group-toggle-3
+bind-key 4C-4 group-toggle-4
+bind-key 4C-5 group-toggle-5
+bind-key 4C-6 group-toggle-6
+bind-key 4C-7 group-toggle-7
+bind-key 4C-8 group-toggle-8
+bind-key 4C-9 group-toggle-9
+
+# Close all windows in group $N
+#bind-key 4M-1 group-close-1
+#bind-key 4M-2 group-close-2
+#bind-key 4M-3 group-close-3
+#bind-key 4M-4 group-close-4
+#bind-key 4M-5 group-close-5
+#bind-key 4M-6 group-close-6
+#bind-key 4M-7 group-close-7
+#bind-key 4M-8 group-close-8
+#bind-key 4M-9 group-close-9
+
+# Toggle showing windows from all groups
+bind-key 4-g group-toggle-all
+
+# Toggle current window's group membership
+bind-key 4C-g window-group
+
+# Cycle through the window groups
+bind-key 4C-Tab group-cycle
+
+# Cycle through the window groups - reverse 
+bind-key 4M-Tab group-rcycle
+
+# Forward cycle through windows in current group
+#bind-key C-Tab	window-cycle-ingroup
+bind-key C-Tab	skippy-xd
+
+# Reverse cycle through windows in current group
+bind-key M-Tab	"/usr/bin/rofi -modi window -config ~/.config/rofi/config -show window"
+
+# Stick current window to be visible in all groups
+bind-key 4C-S	window-stick
+
+####################################################################
+# Tiling Keybinding
+####################################################################
+# Maximize window in vertical direction only
+bind-key 4C-v window-vmaximize
+
+# Maximize window in horizontal direction only
+bind-key 4C-h window-hmaximize
+
+# Tile windows vertically, current window to the left
+bind-key 4-d window-vtile
+
+# Tile windows horizontally, current window to the top
+bind-key 4-s window-htile
+
+####################################################################
+# Move Window Keybindings
+####################################################################
+# Move window to left
+bind-key C-Left window-move-left
+
+# Move window down
+bind-key C-Down window-move-down
+
+# Move window to up
+bind-key C-Up window-move-up
+
+# Move window to right
+bind-key C-Right window-move-right
+
+# Move window to left by 10 pixels 
+bind-key 4C-Left window-move-left-big
+
+# Move window down by 10 pixels
+bind-key 4C-Down window-move-down-big
+
+# Move window up by 10 pixels
+bind-key 4C-Up window-move-up-big
+
+# Move window to right by 10 pixelsP
+bind-key 4C-Right window-move-right-big
+
+# Window snapping
+bind-key 4-Left window-snap-left
+bind-key 4-Down window-snap-down
+bind-key 4-Up window-snap-up
+bind-key 4-Right window-snap-right
+bind-key CS-F1 window-snap-up-left
+bind-key CS-F2 window-snap-down-left
+bind-key CS-F3 window-snap-up-right
+bind-key CS-F4 window-snap-down-right
+
+####################################################################
+# Resize Window Keybindings
+####################################################################
+
+# Move window to left by 10 pixels 
+bind-key 4-h window-move-left-big
+
+# Move window down by 10 pixels
+bind-key 4-j window-move-down-big
+
+# Move window up by 10 pixels
+bind-key 4-k window-move-up-big
+
+# Move window to right by 10 pixelsP
+bind-key 4-l window-move-right-big
+
+# Resize window to the left by 10 pixels
+bind-key 4S-h window-resize-left-big
+
+# Resize window downward by 10 pixels
+bind-key 4S-j window-resize-down-big
+
+# Resize window to the upward by 10 pixels
+bind-key 4S-k window-resize-up-big
+
+# Resize window to the right by 10 pixels
+bind-key 4S-l window-resize-right-big
+
+# Resize window to the left by 10 pixels
+bind-key 4S-Left window-resize-left-big
+
+# Resize window downward by 10 pixels
+bind-key 4S-Down window-resize-down-big
+
+# Resize window to the upward by 10 pixels
+bind-key 4S-Up window-resize-up-big
+
+# Resize window to the right by 10 pixels
+bind-key 4S-Right window-resize-right-big
+
+####################################################################
+# MOUSE Keybindings
+####################################################################
+# Unbind default mouse actions - This removes the right click menu - Mouse binds will still work
+#unbind-mouse all 
+
+#bind-mouse 2 jgmenu_run
+
+# Move window with mouse
+bind-mouse 4-1 window-move
+
+# Resize window with mouse
+bind-mouse 4-3 window-resize
+
+# Lower window's focus with mouse
+bind-mouse 4-4 window-raise
+
+# Lower window's focus with mouse
+bind-mouse 4-5 window-lower
+
+# Hide window with mouse
+bind-mouse 4S-2 window-hide
+
+#bind-mouse 2-4 /usr/bin/jqmenu_run
+
+

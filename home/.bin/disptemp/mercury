@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+ddccontrol -r 0x10 dev:/dev/i2c-9 -w 100 & xsct 8000
+notify-send Mercury "Brightness 100% & Temperature 8000K" -i /home/ngc/.config/openbox/scripts/icons/mercury.png -t 5000

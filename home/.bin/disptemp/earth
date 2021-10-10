@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+ddccontrol -r 0x10 dev:/dev/i2c-9 -w 80 & xsct 6500
+notify-send Earth "Brightness 90% & Temperature 6500K" -i /home/ngc/.config/openbox/scripts/icons/earth.png -t 5000

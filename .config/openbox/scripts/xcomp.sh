@@ -1,0 +1,1 @@
+xdotool key control+n

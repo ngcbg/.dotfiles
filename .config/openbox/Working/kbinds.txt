@@ -1,0 +1,64 @@
+o C-Right         	SendToDesktop
+o C-Left          	SendToDesktop
+o W-S-1           	SendToDesktop
+o W-S-2           	SendToDesktop
+o W-S-3           	SendToDesktop
+o W-S-4           	SendToDesktop
+o C-A-Left        	GoToDesktop
+o C-A-Right       	GoToDesktop
+o W-F1            	GoToDesktop
+o W-F2            	GoToDesktop
+o W-F3            	GoToDesktop
+o W-F4            	GoToDesktop
+o W-d             	ToggleShowDesktop
+o W-q             	Close
+o A-Return        	Maximize
+o S-Return        	Iconify
+o A-space         	client-menu
+o A-Escape        	Lower
+o A-Tab           	NextWindow
+x W-f             	rofi -show window
+o W-S-Right       	DirectionalCycleWindows
+o W-S-Left        	DirectionalCycleWindows
+o W-S-Up          	DirectionalCycleWindows
+o W-S-Down        	DirectionalCycleWindows
+o W-Up            	UnmaximizeFull
+o W-Down          	UnmaximizeFull
+o W-Left          	UnmaximizeFull
+o W-Right         	UnmaximizeFull
+o W-KP_5          	UnmaximizeFull
+o W-KP_Divide     	UnmaximizeFull
+o W-KP_Multiply   	UnmaximizeFull
+o W-KP_8          	UnmaximizeFull
+o W-KP_6          	UnmaximizeFull
+o W-KP_2          	UnmaximizeFull
+o W-KP_4          	UnmaximizeFull
+o W-KP_3          	UnmaximizeFull
+o W-KP_9          	UnmaximizeFull
+o W-KP_7          	UnmaximizeFull
+o W-KP_1          	UnmaximizeFull
+o A-k             	ResizeRelative
+o A-l             	ResizeRelative
+o A-i             	ResizeRelative
+o A-o             	ResizeRelative
+o A-h             	ResizeRelative
+o A-j             	ResizeRelative
+o A-y             	ResizeRelative
+o A-u             	ResizeRelative
+x W-r             	rofi -show drun -show-icons
+x W-t             	xterm
+x Print           	scrot 'screenshot_%Y%m%d-%H%M%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; xviewer $$(xdg-user-dir PICTURES)/$f'
+x A-Print         	scrot -d 5 'screenshot_%Y%m%d-%H%M%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; xviewer $$(xdg-user-dir PICTURES)/$f'
+x A-m             	xterm -e sudo mc
+o C-m             	root-menu
+x W-e             	pcmanfm
+x W-l             	xlock
+x W-z             	apm -z
+x W-s             	apm -S
+o C-A-r           	Reconfigure
+x W-b             	~/.config/tint2/toggle_screenbrightness.sh
+x W-n             	sh ~/.config/openbox/xcompmrg.sh
+x W-k             	feh ~/Documents/ob.keys.jpg
+o C-W-e           	Exit
+x C-W-r           	/sbin/shutdown -r now
+x C-W-s           	/sbin/shutdown -p now

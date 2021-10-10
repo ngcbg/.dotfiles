@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+ddccontrol -r 0x10 dev:/dev/i2c-9 -w 45 & xsct 4000
+notify-send Jupiter "Brightness 45% & Temperature 4000K" -i /home/ngc/.config/openbox/scripts/icons/jupiter.png -t 5000

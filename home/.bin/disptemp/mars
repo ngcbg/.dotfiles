@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+ddccontrol -r 0x10 dev:/dev/i2c-9 -w 50 & xsct 4500
+notify-send Mars "Brightness 50% & Temperature 4500K" -i /home/ngc/.config/openbox/scripts/icons/Mars.png -t 5000

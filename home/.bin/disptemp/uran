@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+ddccontrol -r 0x10 dev:/dev/i2c-9 -w 35 & xsct 3000
+notify-send Uran "Brightness 45% & Temperature 3000K" -i /home/ngc/.config/openbox/scripts/icons/uran.png -t 5000

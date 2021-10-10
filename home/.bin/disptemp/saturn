@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+ddccontrol -r 0x10 dev:/dev/i2c-9 -w 40 & xsct 3500
+notify-send Saturn "Brightness 45% & Temperature 3500K" -i /home/ngc/.config/openbox/scripts/icons/saturn.png -t 5000

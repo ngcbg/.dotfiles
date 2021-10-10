@@ -1,0 +1,13 @@
+[color]
+	ui = auto
+[alias]
+	st = status
+	cm = "!f(){ git commit -a --allow-empty-message -m \"\"; };f"
+	ps = push
+	pl = pull
+	ad = add -A
+	lo = log --graph --oneline --all --decorate
+	acp = !git ad && git cm && git ps
+[user]
+	email = nikolay.gelkov@protonmail.com
+	name = ngcbg
