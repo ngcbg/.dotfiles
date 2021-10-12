@@ -35,8 +35,6 @@ home = os.path.expanduser('~')
 
 keys = [
 
-# Most of our keybindings are in sxhkd file - except these
-
 # SUPER + FUNCTION KEYS
 
     Key([mod], "f", lazy.window.toggle_fullscreen()),
@@ -57,59 +55,17 @@ keys = [
     Key([mod], "l", lazy.layout.right()),
 
 # RESIZE UP, DOWN, LEFT, RIGHT
-    Key([mod, "control"], "l",
-        lazy.layout.grow_right(),
-        lazy.layout.grow(),
-        lazy.layout.increase_ratio(),
-        lazy.layout.delete(),
-        ),
-    Key([mod, "control"], "Right",
-        lazy.layout.grow_right(),
-        lazy.layout.grow(),
-        lazy.layout.increase_ratio(),
-        lazy.layout.delete(),
-        ),
-    Key([mod, "control"], "h",
-        lazy.layout.grow_left(),
-        lazy.layout.shrink(),
-        lazy.layout.decrease_ratio(),
-        lazy.layout.add(),
-        ),
-    Key([mod, "control"], "Left",
-        lazy.layout.grow_left(),
-        lazy.layout.shrink(),
-        lazy.layout.decrease_ratio(),
-        lazy.layout.add(),
-        ),
-    Key([mod, "control"], "k",
-        lazy.layout.grow_up(),
-        lazy.layout.grow(),
-        lazy.layout.decrease_nmaster(),
-        ),
-    Key([mod, "control"], "Up",
-        lazy.layout.grow_up(),
-        lazy.layout.grow(),
-        lazy.layout.decrease_nmaster(),
-        ),
-    Key([mod, "control"], "j",
-        lazy.layout.grow_down(),
-        lazy.layout.shrink(),
-        lazy.layout.increase_nmaster(),
-        ),
-    Key([mod, "control"], "Down",
-        lazy.layout.grow_down(),
-        lazy.layout.shrink(),
-        lazy.layout.increase_nmaster(),
-        ),
+    Key([mod, "control"], "l", lazy.layout.grow_right(), lazy.layout.grow(), lazy.layout.increase_ratio(), lazy.layout.delete(),),
+    Key([mod, "control"], "Right", lazy.layout.grow_right(), lazy.layout.grow(), lazy.layout.increase_ratio(), lazy.layout.delete(),),
+    Key([mod, "control"], "h", lazy.layout.grow_left(), lazy.layout.shrink(), lazy.layout.decrease_ratio(), lazy.layout.add(),),
+    Key([mod, "control"], "Left", lazy.layout.grow_left(), lazy.layout.shrink(), lazy.layout.decrease_ratio(), lazy.layout.add(),),
+    Key([mod, "control"], "k", lazy.layout.grow_up(), lazy.layout.grow(), lazy.layout.decrease_nmaster(),),
+    Key([mod, "control"], "Up", lazy.layout.grow_up(), lazy.layout.grow(), lazy.layout.decrease_nmaster(),),
+    Key([mod, "control"], "j", lazy.layout.grow_down(), lazy.layout.shrink(), lazy.layout.increase_nmaster(),),
+    Key([mod, "control"], "Down", lazy.layout.grow_down(), lazy.layout.shrink(), lazy.layout.increase_nmaster(),),
 ### Treetab controls
-    Key([mod, "shift"], "h",
-        lazy.layout.move_left(),
-        desc='Move up a section in treetab'
-        ),
-    Key([mod, "shift"], "l",
-        lazy.layout.move_right(),
-        desc='Move down a section in treetab'
-        ),
+    Key([mod, "shift"], "h", lazy.layout.move_left(), desc='Move up a section in treetab'),
+    Key([mod, "shift"], "l", lazy.layout.move_right(), desc='Move down a section in treetab'),
 
 # FLIP LAYOUT FOR MONADTALL/MONADWIDE
     Key([mod, "shift"], "f", lazy.layout.flip()),
@@ -124,41 +80,17 @@ keys = [
     Key([mod, "shift"], "space", lazy.window.toggle_floating()),
     
 # Switch focus to specific monitor
-	Key([mod], "Left",
-		lazy.to_screen(0),
-        desc='Keyboard focus to monitor 1'
-        ),
-	Key([mod], "Right",
-        lazy.to_screen(1),
-        desc='Keyboard focus to monitor 2'
-        ),
+	Key([mod], "Left", lazy.to_screen(0), desc='Keyboard focus to monitor 1'),
+	Key([mod], "Right", lazy.to_screen(1), desc='Keyboard focus to monitor 2'),
 # Switch focus of monitors
-    Key([mod], "period",
-      lazy.next_screen(),
-      desc='Move focus to next monitor'
-      ),
-    Key([mod], "comma",
-      lazy.prev_screen(),
-      desc='Move focus to prev monitor'
-      ),
-# Treetab controls
-    Key([mod, "shift"], "h",
-      lazy.layout.move_left(),
-      desc='Move up a section in treetab'
-      ),
-    Key([mod, "shift"], "l",
-      lazy.layout.move_right(),
-      desc='Move down a section in treetab'
-      ),
+    Key([mod], "period", lazy.next_screen(), desc='Move focus to next monitor'),
+    Key([mod], "comma", lazy.prev_screen(), desc='Move focus to prev monitor'),
 	#Key([mod, "shift"], "i",
 		# lazy.widget["keyboardlayout"].next_keyboard(), 
 		# desc='Next keyboard layout'
 		# ),  
 	#Key([mod, "control" ], "d", subprocess.Popen(['pamixer', '-d' '10'])),
-	Key([mod, "mod1" ], "r", 
-	  lazy.layout.sort_windows(window_sorter),
-	  desc='Sort windows by type in TreeTab layout'
-	  ),
+	Key([mod, "mod1" ], "r", lazy.layout.sort_windows(window_sorter), desc='Sort windows by type in TreeTab layout'),
 
     ]
 
@@ -217,7 +149,6 @@ for i in groups:
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen()),
     ])
 
-
 def init_layout_theme():
     return {"margin":10,
             "border_width":2,
@@ -227,7 +158,6 @@ def init_layout_theme():
             }
 
 layout_theme = init_layout_theme()
-
 
 layouts = [
     #layout.Stack(stacks=2, **layout_theme),
@@ -264,7 +194,7 @@ layouts = [
          )
 ]
 
-# COLORS FOR THE BAR
+# BAR COLORS
 def init_colors():
     return [["#2F343F", "#363F53"], # color 0
             ["#2F343F", "#2F343F"], # color 1
@@ -279,7 +209,7 @@ def init_colors():
 
 colors = init_colors()
 
-# WIDGETS FOR THE BAR
+# BAR WIDGETS
 def init_widgets_defaults():
     return dict(font="Noto Sans",
                 fontsize = 12,
@@ -602,7 +532,7 @@ def init_widgets_list():
 						padding = 2
 						),
 				#widget.KeyboardLayout(
-					  # font="FontAwesome", #                  
+					  # font="FontAwesome", 
 					  # fontsize = 14,
 					  # configured_keyboards = ['us','bg'],
 					  # option = "grp:alt_shift_toggle"				  
@@ -619,30 +549,6 @@ def init_widgets_list():
                         icon_size=20,
                         padding = 4
                         ),
-                        #widget.TextBox(
-                        #text = '',
-                        #background = colors[0],
-                        #foreground = colors[2],
-                        #padding = 0,
-                        #fontsize = 22
-                        #),
-				#widget.TextBox(
-                        #text = " Vol:",
-                        #foreground = colors[2],
-                        #background = colors[0],
-                        #padding = 0
-                        #),
-				#widget.Volume(
-                        #foreground = colors[2],
-                        #background = colors[0],
-                        #padding = 5
-                        #),
-				#widget.Sep(
-                        #linewidth = 1,
-                        #padding = 10,
-                        #foreground = colors[2],
-                        #background = colors[0]
-                        #),  
                 widget.Sep(
 						linewidth = 0,
 						padding = 10,
@@ -658,12 +564,10 @@ def init_widgets_list():
 
 def init_widgets_screen0():
     widgets_screen0 = init_widgets_list()
-    #del widgets_screen1                
-    return widgets_screen0					# Monitor 0 will display all widgets in widgets_list
+    return widgets_screen0
 
 def init_widgets_screen1():
     widgets_screen1 = init_widgets_list1()
-#    del widgets_screen1[6:25]				# Slicing removes unwanted widgets (systray) on Monitor 1
     return widgets_screen1
 
 def init_screens():
@@ -704,7 +608,7 @@ def switch_screens(qtile):
     group = qtile.screens[i - 1].group
     qtile.current_screen.set_group(group)
 
-# MOUSE CONFIGURATION
+# MOUSE 
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(),
          start=lazy.window.get_position()),
@@ -720,14 +624,11 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 
-################ assgin apps to groups ##################
-#########################################################
+#Programs  to groups 
+
 @hook.subscribe.client_new
 def assign_app_group(client):
 	d = {}
-#     #####################################################################################
-#     ### Use xprop fo find  the value of WM_CLASS(STRING) -> First field is sufficient ###
-#     #####################################################################################
 	d[group_names[0]] = ["Firefox", "Chromium", "firefox", "chromium", ]
 	d[group_names[1]] = ["Geany", "TelegramDesktop", "Discord", "geany", "telegramDesktop", "discord", ]
 	d[group_names[2]] = ["Inkscape", "Nomacs", "Ristretto", "Nitrogen", "Feh", "inkscape", "nomacs", "ristretto", "nitrogen", "feh", ]
@@ -738,16 +639,13 @@ def assign_app_group(client):
 	d[group_names[7]] = ["Thunar", "Pcmanfm", "thunar", "pcmanfm", ]
 	d[group_names[8]] = ["Thunderbird", "thunderbird" ]
 	d[group_names[9]] = ["Audacious", "audacious" ]
-#     ######################################################################################
-#
+
 	wm_class = client.window.get_wm_class()[0]
 	for i in range(len(d)):
 		if wm_class in list(d.values())[i]:
 			group = list(d.keys())[i-1]
 			client.togroup(group)
 			client.group.cmd_toscreen(toggle=False)
-
-# END
 
 main = None
 
@@ -758,7 +656,6 @@ def start_once():
 
 @hook.subscribe.startup
 def start_always():
-    # Set the cursor to something sane in X
     subprocess.Popen(['xsetroot', '-cursor_name', 'left_ptr'])
 
 @hook.subscribe.client_new
@@ -805,9 +702,6 @@ floating_layout = layout.Floating(float_rules=[
 
 # keys.append(Key([mod, "mod1" ], "r", lazy.layout.sort_windows(window_sorter)))
 keys.append(Key([mod, "mod1" ], "h", show_shortcuts()))
-
 focus_on_window_activationfocus_on_window_activationauto_fullscreen = True
-
 focus_on_window_activation = "smart" # or focus
-
 wmname = "Qtile"
