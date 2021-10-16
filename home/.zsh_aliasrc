@@ -11,8 +11,8 @@ alias m="mcedit"
 alias v="vim"
 alias n="nano"
 alias less='less.sh'
-set PAGER less
-alias man="man -H"
+export PAGER="most"
+#alias man="man -H"
 
 #fix obvious typo's
 alias cd..='cd ..'
