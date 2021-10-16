@@ -10,22 +10,7 @@ from libqtile import layout, bar, widget, hook
 from libqtile.lazy import lazy
 from typing import List  # noqa: F401
 
-def window_sorter(win):
-	patterns = (
-		('discord', 'Messaging'),
-		('Skype', 'Messaging'),
-		('Chromium', 'Util'),
-		('Pcmanfm', 'Work'),
-		('Thunar', 'Util'),
-		('Firefox', 'Util'),
-		('Geany', 'Work'),
-		)
-	for k, v in patterns:
-		if k in win.name:
-			return v
-	return 'Other'	
-
-#mod4 or mod = super key
+# Bindings
 mod = "mod4"
 mod1 = "alt"
 mod2 = "control"
@@ -35,18 +20,17 @@ home = os.path.expanduser('~')
 
 keys = [
 
-# SUPER + FUNCTION KEYS
-
+# Kill, Shutdown, Rstgart and Full Screen
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
     Key([mod, "shift"], "r", lazy.restart()),
     Key([mod], "z", lazy.shutdown()),
 
-# QTILE LAYOUT KEYS
+# Layouts
     Key([mod], "n", lazy.layout.reset()),
     Key([mod], "space", lazy.next_layout()),
 
-# CHANGE FOCUS
+# Refocus
     Key([mod], "Up", lazy.layout.up()),
     Key([mod], "Down", lazy.layout.down()),
     Key([mod], "k", lazy.layout.up()),
@@ -54,7 +38,7 @@ keys = [
     Key([mod], "h", lazy.layout.left()),
     Key([mod], "l", lazy.layout.right()),
 
-# RESIZE UP, DOWN, LEFT, RIGHT
+# Resize up, down, left, right
     Key([mod, "control"], "l", lazy.layout.grow_right(), lazy.layout.grow(), lazy.layout.increase_ratio(), lazy.layout.delete(),),
     Key([mod, "control"], "Right", lazy.layout.grow_right(), lazy.layout.grow(), lazy.layout.increase_ratio(), lazy.layout.delete(),),
     Key([mod, "control"], "h", lazy.layout.grow_left(), lazy.layout.shrink(), lazy.layout.decrease_ratio(), lazy.layout.add(),),
@@ -63,69 +47,37 @@ keys = [
     Key([mod, "control"], "Up", lazy.layout.grow_up(), lazy.layout.grow(), lazy.layout.decrease_nmaster(),),
     Key([mod, "control"], "j", lazy.layout.grow_down(), lazy.layout.shrink(), lazy.layout.increase_nmaster(),),
     Key([mod, "control"], "Down", lazy.layout.grow_down(), lazy.layout.shrink(), lazy.layout.increase_nmaster(),),
-### Treetab controls
-    Key([mod, "shift"], "h", lazy.layout.move_left(), desc='Move up a section in treetab'),
-    Key([mod, "shift"], "l", lazy.layout.move_right(), desc='Move down a section in treetab'),
 
-# FLIP LAYOUT FOR MONADTALL/MONADWIDE
+# Layout flip (MonadTall and MonadWide)
     Key([mod, "shift"], "f", lazy.layout.flip()),
 
-# MOVE WINDOWS UP OR DOWN MONADTALL/MONADWIDE LAYOUT
+# Rotate windows (MonadTall and MonadWide)
     Key([mod, "shift"], "Up", lazy.layout.shuffle_up()),
+    Key([mod, "shift"], "k", lazy.layout.shuffle_up()),
     Key([mod, "shift"], "Down", lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down()),
     Key([mod, "shift"], "Left", lazy.layout.swap_left()),
+    Key([mod, "shift"], "h", lazy.layout.swap_left()),
     Key([mod, "shift"], "Right", lazy.layout.swap_right()),
+    Key([mod, "shift"], "l", lazy.layout.swap_right()),
 
-# TOGGLE FLOATING LAYOUT
+# Toglle ON/OFF floating layout
     Key([mod, "shift"], "space", lazy.window.toggle_floating()),
     
-# Switch focus to specific monitor
+# Keyboards focus to specific monitor
 	Key([mod], "Left", lazy.to_screen(0), desc='Keyboard focus to monitor 1'),
-	Key([mod], "Right", lazy.to_screen(1), desc='Keyboard focus to monitor 2'),
-# Switch focus of monitors
-    Key([mod], "period", lazy.next_screen(), desc='Move focus to next monitor'),
-    Key([mod], "comma", lazy.prev_screen(), desc='Move focus to prev monitor'),
-	#Key([mod, "shift"], "i",
-		# lazy.widget["keyboardlayout"].next_keyboard(), 
-		# desc='Next keyboard layout'
-		# ),  
-	#Key([mod, "control" ], "d", subprocess.Popen(['pamixer', '-d' '10'])),
-	Key([mod, "mod1" ], "r", lazy.layout.sort_windows(window_sorter), desc='Sort windows by type in TreeTab layout'),
+	Key([mod], "Right", lazy.to_screen(1), desc='Keyboard focus to monitor 2')
 
     ]
 
-def show_shortcuts():
-    key_map = {"mod1": "alt", "mod4": "super"}
-    shortcuts_path = "{0}/{1}".format(os.environ["HOME"], "qtile_shortcuts")
-    shortcuts = open("{0}".format(shortcuts_path), 'w')
-    shortcuts.write("{0:30}| {1:50}\n".format("KEYS COMBINATION", "COMMAND"))
-    shortcuts.write("{0:80}\n".format("=" * 80))
-    for key in keys:
-        key_comb = ""
-        for modifier in key.modifiers:
-            key_comb += key_map.get(modifier, modifier) + "+"
-        key_comb += key.key
-        shortcuts.write("{0:30}| ".format(key_comb))
-        cmd_str = ""
-        for command in key.commands:
-            cmd_str += command.name + " "
-            for arg in command.args:
-                cmd_str += "{0} ".format(repr(arg))
-        shortcuts.write("{0:50}\n".format(cmd_str))
-        shortcuts.write("{0:80}\n".format("-" * 80))
-    shortcuts.close()
-    return lazy.spawn("xterm -wf -e less {0}".format(shortcuts_path))
+
 
 groups = []
 
-# FOR QWERTY KEYBOARDS
+# Groups & Layouts
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
-
 group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
-#group_labels = ["", "", "", "", "", "", "", "", "", "",]
-#group_labels = ["Web", "Edit/chat", "Image", "Gimp", "Meld", "Video", "Vb", "Files", "Mail", "Music",]
-
-group_layouts = ["monadtall", "monadwide", "TreeTab", "monadtall", "max", "max", "matrix", "floating", "monadtall", "monadwide",]
+group_layouts = ["monadtall", "monadtall", "matrix", "monadwide", "max", "max", "matrix", "floating", "monadtall", "monadwide",]
 
 for i in range(len(group_names)):
     groups.append(
@@ -138,15 +90,17 @@ for i in range(len(group_names)):
 for i in groups:
     keys.extend([
 
-#CHANGE WORKSPACES
+# Workspace change
         Key([mod], i.name, lazy.group[i.name].toscreen()),
         Key([mod], "Tab", lazy.screen.next_group()),
         Key([mod, "shift" ], "Tab", lazy.screen.prev_group()),        
 
-# MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND STAY ON WORKSPACE
+# Move window to workspace and STAY on current one
         Key([mod, "mod1"], i.name, lazy.window.togroup(i.name)),
-# MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND FOLLOW MOVED WINDOW TO WORKSPACE
+        
+# Move window to workspace and FOLLOW the window
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen()),
+        
     ])
 
 def init_layout_theme():
@@ -171,30 +125,10 @@ layouts = [
     layout.MonadWide(margin=8, border_width=2, border_focus="#F08080", border_normal="#4c566a"),
     layout.Matrix(**layout_theme),
     layout.Floating(**layout_theme),
-    layout.Max(**layout_theme),
-    layout.TreeTab(
-		 sections=['Work', 'Messaging', 'Docs', 'Util', 'Other'],
-         font = "Noto Sans",
-         fontsize = 12,
-         section_fontsize = 12,
-         border_width = 2,
-         bg_color = "1c1f24",
-         active_bg = "c678dd",
-         active_fg = "000000",
-         inactive_bg = "a9a1e1",
-         inactive_fg = "1c1f24",
-         padding_left = 0,
-         padding_x = 0,
-         padding_y = 5,
-         section_top = 10,
-         section_bottom = 20,
-         level_shift = 8,
-         vspace = 3,
-         panel_width = 200
-         )
+    layout.Max(**layout_theme)
 ]
 
-# BAR COLORS
+# Bar colors
 def init_colors():
     return [["#2F343F", "#363F53"], # color 0
             ["#2F343F", "#2F343F"], # color 1
@@ -209,7 +143,7 @@ def init_colors():
 
 colors = init_colors()
 
-# BAR WIDGETS
+# Widgets
 def init_widgets_defaults():
     return dict(font="Noto Sans",
                 fontsize = 12,
@@ -531,12 +465,6 @@ def init_widgets_list():
 						background = colors[0],
 						padding = 2
 						),
-				#widget.KeyboardLayout(
-					  # font="FontAwesome", 
-					  # fontsize = 14,
-					  # configured_keyboards = ['us','bg'],
-					  # option = "grp:alt_shift_toggle"				  
-						#),
 				widget.Sep(
 						linewidth = 1,
 						padding = 10,
@@ -607,6 +535,30 @@ def switch_screens(qtile):
     i = qtile.screens.index(qtile.current_screen)
     group = qtile.screens[i - 1].group
     qtile.current_screen.set_group(group)
+    
+def show_shortcuts():
+    key_map = {"mod1": "alt", "mod4": "super"}
+    shortcuts_path = "{0}/{1}".format(os.environ["HOME"], "qtile_shortcuts")
+    shortcuts = open("{0}".format(shortcuts_path), 'w')
+    shortcuts.write("{0:30}| {1:50}\n".format("KEYS COMBINATION", "COMMAND"))
+    shortcuts.write("{0:80}\n".format("=" * 80))
+    for key in keys:
+        key_comb = ""
+        for modifier in key.modifiers:
+            key_comb += key_map.get(modifier, modifier) + "+"
+        key_comb += key.key
+        shortcuts.write("{0:30}| ".format(key_comb))
+        cmd_str = ""
+        for command in key.commands:
+            cmd_str += command.name + " "
+            for arg in command.args:
+                cmd_str += "{0} ".format(repr(arg))
+        shortcuts.write("{0:50}\n".format(cmd_str))
+        shortcuts.write("{0:80}\n".format("-" * 80))
+    shortcuts.close()
+    return lazy.spawn("xterm -wf -e vim {0}".format(shortcuts_path))
+    
+keys.append(Key([mod, "mod1" ], "h", show_shortcuts()))    
 
 # MOUSE 
 mouse = [
@@ -629,14 +581,14 @@ cursor_warp = False
 @hook.subscribe.client_new
 def assign_app_group(client):
 	d = {}
-	d[group_names[0]] = ["Firefox", "Chromium", "firefox", "chromium", ]
+	d[group_names[0]] = ["Firefox", "Chromium", "firefox", "chromium", "Pcmanfm", "pcmanfm" ]
 	d[group_names[1]] = ["Geany", "TelegramDesktop", "Discord", "geany", "telegramDesktop", "discord", ]
 	d[group_names[2]] = ["Inkscape", "Nomacs", "Ristretto", "Nitrogen", "Feh", "inkscape", "nomacs", "ristretto", "nitrogen", "feh", ]
-	d[group_names[3]] = ["Gimp", "gimp" ]
+	d[group_names[3]] = ["Gimp", "gimp", "Incscape", "incskcape", ]
 	d[group_names[4]] = ["Meld", "meld", "org.gnome.meld" "org.gnome.Meld", "VirtualBox Machine", "virtualbox machine", ]
 	d[group_names[5]] = ["Vlc","vlc", "Mpv", "mpv", "Smplayer", "smplayer" ]
 	d[group_names[6]] = ["VirtualBox Manager",  "Vmplayer", "virtualbox manager", "vmplayer", ]
-	d[group_names[7]] = ["Thunar", "Pcmanfm", "thunar", "pcmanfm", ]
+	d[group_names[7]] = ["Thunar", "thunar", ]
 	d[group_names[8]] = ["Thunderbird", "thunderbird" ]
 	d[group_names[9]] = ["Audacious", "audacious" ]
 
@@ -700,8 +652,6 @@ floating_layout = layout.Floating(float_rules=[
 
 ],  fullscreen_border_width = 0, border_width = 0)
 
-# keys.append(Key([mod, "mod1" ], "r", lazy.layout.sort_windows(window_sorter)))
-keys.append(Key([mod, "mod1" ], "h", show_shortcuts()))
 focus_on_window_activationfocus_on_window_activationauto_fullscreen = True
 focus_on_window_activation = "smart" # or focus
 wmname = "Qtile"
