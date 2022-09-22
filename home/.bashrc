@@ -1,9 +1,12 @@
+# vim:fileencoding=utf-8:foldmethod=marker
+
 [[ $- != *i* ]] && return
 [[ $- == *i* ]] && stty -ixon
 
 # Various config files {{{
 
 [[ -f /etc/bash_completion ]] && . /etc/bash_completion
+[[ -f /usr/share/bash_completion/bash_completion ]] && . /usr/share/bash_completion/bash_completion 
 [[ -f /etc/profile ]] && . /etc/profile
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 [[ -f ~/.fzf.bash ]] && . ~/.fzf.bash
@@ -60,8 +63,8 @@ function fstr()
 	fi
  local SMSO=$(tput smso)
  local RMSO=$(tput rmso)
- find . -type f -name "${2:-*}" -print0 | xargs -0 grep -sn ${case} "$1" 2>&- | sed "s/$1/${SMSO}\0${RMSO}/gI" | more
- 
+# find . -type f -name "${2:-*}" -print0 | xargs -0 grep -sn ${case} "$1" 2>&- | sed "s/$1/${SMSO}\0${RMSO}/gI" | more
+ find . -type f -name $1
 }
 # }}}
 
@@ -83,7 +86,7 @@ echo -e "\nYou are logged on ${RED}$HOST"
     echo -e "\n${RED}Users logged on:$NC " ; w -h
     echo -e "\n${RED}Current date :$NC " ; date
     echo -e "\n${RED}Machine stats :$NC " ; uptime
-    echo -e "\n${RED}Memory stats :$NC " ; free -m
+    echo -e "\n${RED}Memory stats :$NC " ; free
     MY_IP=$(/sbin/ifconfig enp8s0 | awk '/inet/ { print $2 } ' | sed -e s/addr://)
     MY_IP_WIFI=$(/sbin/ifconfig wlan0 | awk '/inet/ { print $2 } ' | sed -e s/addr://)
     echo -e "\n${RED}Local IP Address :$NC" ; echo ${MY_IP:-"Not connected"}
@@ -114,16 +117,13 @@ function ask()
 }
 # }}}
 
-# {{{
-# search through directory contents with grep'
+# search through directory contents with grep' {{{
 function lsgrep() {
 	ls | grep "$@"
 }
 # }}}
 
-# {{{
-
-# # ex = EXtractor for all kinds of archives
+# # ex = EXtractor for all kinds of archives {{{
 # # usage: ex <file>
 ex ()
 {
@@ -179,11 +179,76 @@ isprime () {
 }
 # }}}
 
+# Display 256 colors {{{
+function aa_256 () 
+{ 
+    local o= i= x=`tput op` cols=`tput cols` y= oo= yy=;
+    y=`printf %$(($cols-6))s`;
+    yy=${y// /=};
+    for i in {0..256};
+    do
+        o=00${i};
+        oo=`echo -en "setaf ${i}\nsetab ${i}\n"|tput -S`;
+        echo -e "${o:${#o}-3:3} ${oo}${yy}${x}";
+    done
+}
+# }}}
+
+# Display 256 colors II {{{
+function aa_c666 ()
+{ 
+    local r= g= b= c= CR="`tput sgr0;tput init`" C="`tput op`" n="\n\n\n" t="  " s="    ";
+    echo -e "${CR}${n}";
+    function c666 () 
+    { 
+        local b= g=$1 r=$2;
+        for ((b=0; b<6; b++))
+        do
+            c=$(( 16 + ($r*36) + ($g*6) + $b ));
+            echo -en "setaf ${c}\nsetab ${c}\n" | tput -S;
+            echo -en "${s}";
+        done
+    };
+    function c666b () 
+    { 
+        local g=$1 r=;
+        for ((r=0; r<6; r++))
+        do
+            echo -en " `c666 $g $r`${C} ";
+        done
+    };
+    for ((g=0; g<6; g++))
+    do
+        c666b=`c666b $g`;
+        echo -e " ${c666b}";
+        echo -e " ${c666b}";
+        echo -e " ${c666b}";
+        echo -e " ${c666b}";
+        echo -e " ${c666b}";
+    done;
+    echo -e "${CR}${n}${n}"
+}
+# }}}
+
+# Print terminal colors etc. {{{
+c ()
+{
+    tput clear;
+    pm "$TERM: [colors:`tput colors`/`tput pairs`]";
+    RC=`tput op` L1=$(L '=' $(( ${COLUMNS} - 25 )));
+    for i in `seq ${1:-0} ${2:-16}`;
+    do
+        o="  $i";
+        echo -e " ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${L1}${RC}";
+    done
+}
+# }}}
+
 export HISTCONTROL=ignoreboth:erasedups
 export GTK_OVERLAY_SCROLLING=0
 export EDITOR='vim'
-export VISUAL='nano'
-export BROWSER='lynx'
+export VISUAL='vim'
+export BROWSER='luakit'
 
 PS1='[\u@\h \W]\$ '
 

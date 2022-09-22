@@ -9,22 +9,21 @@ from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 from libqtile.lazy import lazy
 from typing import List  # noqa: F401
+#from libqtile.config import EzKey as Key
 
 # Bindings
 mod = "mod4"
 mod1 = "alt"
-mod2 = "control"
-myTerm = "kitty"
 menu = "jgmenu_run"
 home = os.path.expanduser('~')
 
 keys = [
 
 # Kill, Shutdown, Rstgart and Full Screen
-    Key([mod], "f", lazy.window.toggle_fullscreen()),
-    Key([mod], "q", lazy.window.kill()),
-    Key([mod, "shift"], "r", lazy.restart()),
-    Key([mod], "z", lazy.shutdown()),
+    Key([mod], "f", lazy.window.toggle_fullscreen(),desc='Active window full screen'),
+    Key([mod], "q", lazy.window.kill(),desc='Kill active window'),
+    Key([mod, "shift"], "z", lazy.shutdown(),desc='Shutdown Qtile'),
+    Key([mod], "z", lazy.restart(),desc='Restart Qtile'),
 
 # Layouts
     Key([mod], "n", lazy.layout.reset()),
@@ -70,13 +69,11 @@ keys = [
 
     ]
 
-
-
 groups = []
 
 # Groups & Layouts
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
-group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0",]
+group_labels = ["1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 ", "0 ",]
 group_layouts = ["monadtall", "monadtall", "matrix", "monadwide", "max", "max", "matrix", "floating", "monadtall", "monadwide",]
 
 for i in range(len(group_names)):
@@ -96,8 +93,7 @@ for i in groups:
         Key([mod, "shift" ], "Tab", lazy.screen.prev_group()),        
 
 # Move window to workspace and STAY on current one
-        Key([mod, "mod1"], i.name, lazy.window.togroup(i.name)),
-        
+        Key(["control"], i.name, lazy.window.togroup(i.name)),
 # Move window to workspace and FOLLOW the window
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen()),
         
@@ -157,22 +153,22 @@ def init_widgets_list1():
     widgets_list1 = [
 				widget.GroupBox(
 						font="FontAwesome",
-						fontsize = 16,
-						margin_y = 3,
-						margin_x = 0,
-						padding_y = 5,
-						padding_x = 5,
-						borderwidth = 3,
-						disable_drag = True,
-						active = "#7BA1B3",
-						inactive = colors[5],
-						rounded = False,
-						highlight_method = "line",
-						invert_mouse_wheel="True",
-						this_current_screen_border = colors[9],
-						foreground = colors[2],
-						background = colors[0]
-						),
+                        fontsize = 15,
+                        margin_y = 3,
+                        margin_x = 0,
+                        padding_y = 5,
+                        padding_x = 5,
+                        borderwidth = 3,
+                        disable_drag = True,
+                        active = "#7BA1B3",
+                        inactive = colors[5],
+#                       hide_unused="True",
+                        highlight_method = "line",
+                        invert_mouse_wheel="True",
+                        this_current_screen_border = colors[9],
+                        foreground = colors[2],
+                        background = colors[0]
+                        ),
 				widget.Sep(
                         linewidth = 0,
                         padding = 10,
@@ -226,16 +222,16 @@ def init_widgets_list1():
 						visible_on_warn = False
 						),
 				widget.WindowTabs(
-						padding = 10,
+						padding = 1,
 						separator = '  |  '
 						),
-				widget.Sep(
-                       linewidth = 0,
-                       padding = 1000,
-                       size_percent = 50,
-                       foreground = colors[2],
-                       background = colors[0]
-                       ),
+				# widget.Sep(
+                       # linewidth = 0,
+                       # padding = 1000,
+                       # size_percent = 50,
+                       # foreground = colors[2],
+                       # background = colors[0]
+                       # ),
 					]
     return widgets_list1
                        
@@ -308,7 +304,7 @@ def init_widgets_list():
 						font="FontAwesome",
 						fontsize = 15,
 						padding = 5,
-						func=lambda: subprocess.check_output("/home/ngc/.bin/qtile-bar/loadav.sh").decode("utf-8"),
+						func=lambda: subprocess.check_output("/home/ngc/.bin/qtile-bar/loadav.sh").decode("utf-8")
 						),
 				widget.Sep(
 						linewidth = 1,
@@ -318,35 +314,35 @@ def init_widgets_list():
 						background = colors[0]
 						),						
 				widget.WindowTabs(
-						padding = 10,
+						padding = 1,
 						separator = '  |  '
 						),
-				widget.TextBox(
-						font="FontAwesome",
-						fontsize=20,
-						text="",
-						foreground=colors[5],
-						#background="#1D1D1D",
-						background= colors[0],
-						padding = 5
-						),						
-				widget.GenPollText(
-						update_interval=5,
-						#background = "#1D1D1D",
-						foreground = "#7BA1B3",
-						background = colors[0],
-						#foreground = colors[8],
-						font="Comic Sans MS",
-						max_chars=60,
-						fontsize = 16,
-						padding = 5,
-						func=lambda: subprocess.check_output("/home/ngc/.bin/qtile-bar/play.sh").decode("utf-8"),
-						mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("playerctl play-pause"), 
-										   'Button2': lambda: qtile.cmd_spawn("playerctl next"),
-										   'Button3': lambda: qtile.cmd_spawn("playerctl previous"),
-										   'Button5': lambda: qtile.cmd_spawn("playerctl position 10+"),
-										   'Button4': lambda: qtile.cmd_spawn("playerctl position 10-")},
-						),						
+				# widget.TextBox(
+						# font="FontAwesome",
+						# fontsize=20,
+						# text="",
+						# foreground=colors[5],
+						# #background="#1D1D1D",
+						# background= colors[0],
+						# padding = 5
+						# ),						
+				# widget.GenPollText(
+						# update_interval=5,
+						# #background = "#1D1D1D",
+						# foreground = "#7BA1B3",
+						# background = colors[0],
+						# #foreground = colors[8],
+						# font="Comic Sans MS",
+						# max_chars=60,
+						# fontsize = 16,
+						# padding = 5,
+						# func=lambda: subprocess.check_output("/home/ngc/.bin/qtile-bar/play.sh").decode("utf-8"),
+						# mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("playerctl play-pause"), 
+										   # 'Button2': lambda: qtile.cmd_spawn("playerctl next"),
+										   # 'Button3': lambda: qtile.cmd_spawn("playerctl previous"),
+										   # 'Button5': lambda: qtile.cmd_spawn("playerctl position 10+"),
+										   # 'Button4': lambda: qtile.cmd_spawn("playerctl position 10-")},
+						# ),						
 				# widget.TextBox(
 						# font="FontAwesome",
 						# fontsize=20,
@@ -364,17 +360,17 @@ def init_widgets_list():
 						# max_chars = 40,
 						# padding = 3
 						# ),
-				widget.Sep(
-						linewidth = 0,
-						padding = 10,
-						size_percent = 50,
-						foreground = colors[2],
-						background = colors[0]
-						),
+				# widget.Sep(
+						# linewidth = 0,
+						# padding = 10,
+						# size_percent = 50,
+						# foreground = colors[2],
+						# background = colors[0]
+						# ),
 				widget.Image(
 						filename = "~/.config/qtile/icons/ram4.png",
 						margin = 5,
-						scale = "True"
+						scale = "True",
 						),
 				widget.GenPollText(
 						update_interval=30,
@@ -387,7 +383,7 @@ def init_widgets_list():
 				widget.Image(
 						filename = "~/.config/qtile/icons/nvidia2.png",
 						margin = 7,
-						scale = "True"
+						scale = "True",
 						),
 				widget.NvidiaSensors(
 						update_interval = 10,
@@ -400,7 +396,7 @@ def init_widgets_list():
 				widget.Image(
 						filename = "~/.config/qtile/icons/cpu2.png",
 						margin = 6,
-						scale = "True"
+						scale = "True",
 						),                        
 				widget.GenPollText(
 						update_interval=20,
@@ -444,7 +440,8 @@ def init_widgets_list():
                         foreground = colors[5],
                         background = colors[0],
                         fontsize = 14,
-                        format="%m.%d.%y %H:%M"
+                        format="%m.%d.%y %H:%M",
+                        mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("orage")}
                         ),
 				widget.Sep(
 						linewidth = 1,
@@ -540,8 +537,8 @@ def show_shortcuts():
     key_map = {"mod1": "alt", "mod4": "super"}
     shortcuts_path = "{0}/{1}".format(os.environ["HOME"], "qtile_shortcuts")
     shortcuts = open("{0}".format(shortcuts_path), 'w')
-    shortcuts.write("{0:30}| {1:50}\n".format("KEYS COMBINATION", "COMMAND"))
-    shortcuts.write("{0:80}\n".format("=" * 80))
+    shortcuts.write("{0:30}| {1:50}| {2:10}\n".format("KEYS COMBINATION", "COMMAND", "DESCRIPTION"))
+    shortcuts.write("{0:80}\n".format("=" * 110))
     for key in keys:
         key_comb = ""
         for modifier in key.modifiers:
@@ -554,9 +551,9 @@ def show_shortcuts():
             for arg in command.args:
                 cmd_str += "{0} ".format(repr(arg))
         shortcuts.write("{0:50}\n".format(cmd_str))
-        shortcuts.write("{0:80}\n".format("-" * 80))
+        shortcuts.write("{0:80}\n".format("-" * 110))
     shortcuts.close()
-    return lazy.spawn("xterm -wf -e vim {0}".format(shortcuts_path))
+    return lazy.spawn("xterm -wf -e most {0}".format(shortcuts_path))
     
 keys.append(Key([mod, "mod1" ], "h", show_shortcuts()))    
 
@@ -578,28 +575,28 @@ cursor_warp = False
 
 #Programs  to groups 
 
-@hook.subscribe.client_new
-def assign_app_group(client):
-	d = {}
-	d[group_names[0]] = ["Firefox", "Chromium", "firefox", "chromium", "Pcmanfm", "pcmanfm" ]
-	d[group_names[1]] = ["Geany", "TelegramDesktop", "Discord", "geany", "telegramDesktop", "discord", ]
-	d[group_names[2]] = ["Inkscape", "Nomacs", "Ristretto", "Nitrogen", "Feh", "inkscape", "nomacs", "ristretto", "nitrogen", "feh", ]
-	d[group_names[3]] = ["Gimp", "gimp", "Incscape", "incskcape", ]
-	d[group_names[4]] = ["Meld", "meld", "org.gnome.meld" "org.gnome.Meld", "VirtualBox Machine", "virtualbox machine", ]
-	d[group_names[5]] = ["Vlc","vlc", "Mpv", "mpv", "Smplayer", "smplayer" ]
-	d[group_names[6]] = ["VirtualBox Manager",  "Vmplayer", "virtualbox manager", "vmplayer", ]
-	d[group_names[7]] = ["Thunar", "thunar", ]
-	d[group_names[8]] = ["Thunderbird", "thunderbird" ]
-	d[group_names[9]] = ["Audacious", "audacious" ]
+# @hook.subscribe.client_new
+# def assign_app_group(client):
+	# d = {}
+	# d[group_names[0]] = ["Firefox", "Chromium", "firefox", "chromium", "Pcmanfm", "pcmanfm" ]
+	# d[group_names[1]] = ["Geany", "TelegramDesktop", "Discord", "geany", "telegramDesktop", "discord", ]
+	# d[group_names[2]] = ["Inkscape", "Nomacs", "Ristretto", "Nitrogen", "Feh", "inkscape", "nomacs", "ristretto", "nitrogen", "feh", ]
+	# d[group_names[3]] = ["Gimp", "gimp", "Incscape", "incskcape", ]
+	# d[group_names[4]] = ["Meld", "meld", "org.gnome.meld" "org.gnome.Meld", "VirtualBox Machine", "virtualbox machine", ]
+	# d[group_names[5]] = ["Vlc","vlc", "Mpv", "mpv", "Smplayer", "smplayer" ]
+	# d[group_names[6]] = ["VirtualBox Manager",  "Vmplayer", "virtualbox manager", "vmplayer", ]
+	# d[group_names[7]] = ["Thunar", "thunar", ]
+	# d[group_names[8]] = ["Thunderbird", "thunderbird" ]
+	# d[group_names[9]] = ["Audacious", "audacious" ]
 
-	wm_class = client.window.get_wm_class()[0]
-	for i in range(len(d)):
-		if wm_class in list(d.values())[i]:
-			group = list(d.keys())[i-1]
-			client.togroup(group)
-			client.group.cmd_toscreen(toggle=False)
+	# wm_class = client.window.get_wm_class()[0]
+	# for i in range(len(d)):
+		# if wm_class in list(d.values())[i]:
+			# group = list(d.keys())[i-1]
+			# client.togroup(group)
+			# client.group.cmd_toscreen(toggle=False)
 
-main = None
+#main = None
 
 @hook.subscribe.startup_once
 def start_once():
@@ -647,8 +644,9 @@ floating_layout = layout.Floating(float_rules=[
     Match(wm_class='Arandr'),
     Match(wm_class='feh'),
     Match(wm_class='Galculator'),
-    Match(wm_class='arcolinux-logout'),
+    Match(wm_class='archlinux-logout'),
     Match(wm_class='xfce4-terminal'),
+    Match(wm_class='orage'),
 
 ],  fullscreen_border_width = 0, border_width = 0)
 

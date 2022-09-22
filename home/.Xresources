@@ -1,290 +1,237 @@
 ! ------------------------------------------------------------------------------
-! theme colors
+! XTERM
 ! ------------------------------------------------------------------------------
-Xcursor.size: 14
+! Xterm Options
 
-! ======================= Fonts
-Xft.autohint: 						0
-Xft.dpi: 							109
-Xft.lcdfilter: 						lcddefault
-Xft.hintstyle: 						hintfull
-Xft.hinting: 						true
-Xft.antialias: 						true
-Xft.rgba: 							rgb
+Xcursor.size:					14
+Xft.autohint:					false
+Xft.dpi:						109
+Xft.lcdfilter:					lcddefault
+Xft.hintstyle:					hintfull
+Xft.hinting:					true
+Xft.antialias:					true
+Xft.rgba:						rgb
 
-! ======================== Special color scheme
-!*.foreground: #c0c5ce
-!*.background: #2b303b
-!*.cursorColor: #c0c5ce
-!
-!*.color0: #2b303b
-!*.color1: #bf616a
-!*.color2: #a3be8c
-!*.color3: #ebcb8b
-!*.color4: #8fa1b3
-!*.color5: #b48ead
-!*.color6: #96b5b4
-!*.color7: #65737e
-!*.color8: #65737e
-!*.color9: #bf616a
-!*.color10: #a3be8c
-!*.color11: #ebcb8b
-!*.color12: #8fa1b3
-!*.color13: #b48ead
-!*.color14: #96b5b4
-!*.color15: #F6F6F6
+! Xterm  Nord color scheme
 
-! ========================Tango color scheme
-!xterm*foreground			: #eeeeec
-!xterm*background			: #111111
-!xterm*cursorColor			: #8ae234
-!Xterm*colorUL				: #8ae234
-!xterm*underlineColor	: #92659a
-!! - Aluminium -
-!xterm*color0					: #2e3436
-!xtemr*color8					: #888A85
-!! - Scariet Red -
-!xterm*color1					: #cc0000
-!xterm*color9					: #ef2929
-!! - Chameleon -
-!xterm*color2					: #4e9a06
-!xterm*color10				: #8ae234
-!! - utter -
-!xterm*color3					: #edd400
-!xterm*color11				: #fce94f
-!! - Sky Blue -
-!xterm*color4					: #3465a4
-!xterm*color12				: #729fcf
-!! - Plum -
-!xterm*color5					: #92659a
-!xterm*color13				: #c19fbe
-!! - Cyan -
-!xterm*color6					: #07c7ca
-!xterm*color14				: #63e9e9
-!! - Aluminium 2 -
-!xterm*color7					: #d3d7cf
-!xterm*color15				: #eeeeec
+#define nord0           		#2E3440
+#define nord1           		#3B4252
+#define nord2           		#434C5E
+#define nord3           		#4C566A
+#define nord4           		#D8DEE9
+#define nord5           		#E5E9F0
+#define nord6           		#ECEFF4
+#define nord7           		#8FBCBB
+#define nord8           		#88C0D0
+#define nord9           		#81A1C1
+#define nord10          		#5E81AC
+#define nord11          		#BF616A
+#define nord12         			#D08770
+#define nord13          		#EBCB8B
+#define nord14          		#A3BE8C
+#define nord15          		#B48EAD
 
-! ======================= Nord -color scheme
+xterm*foreground:				#d8dee9
+xterm*background :				#2e3440
+xterm*cursorColor:				#d8dee9
+!xterm*cursorColor:				#8AE234
+xterm*colorUL:					#366060
+xterm*underlineColor:			#92659a
+xterm*fading:					35
+xterm*fadeColor:				#4c566a
+xterm*color0:					#3b4252
+xterm*color1:					#bf616a
+xterm*color2:					#a3be8c
+xterm*color3:					#ebcb8b
+xterm*color4:					#81a1c1
+xterm*color5:					#b48ead
+xterm*color6:					#88c0d0
+xterm*color7:					#e5e9f0
+xterm*color8:					#4c566a
+xterm*color9:					#bf616a
+xterm*color10:					#a3bE8c
+xterm*color11:					#ebcB8b
+xterm*color12:					#81a1c1
+xterm*color13:					#b48ead
+xterm*color14:					#8fbcbb
+xterm*color15:					#eceff4
 
-#define nord0 #2E3440
-#define nord1 #3B4252
-#define nord2 #434C5E
-#define nord3 #4C566A
-#define nord4 #D8DEE9
-#define nord5 #E5E9F0
-#define nord6 #ECEFF4
-#define nord7 #8FBCBB
-#define nord8 #88C0D0
-#define nord9 #81A1C1
-#define nord10 #5E81AC
-#define nord11 #BF616A
-#define nord12 #D08770
-#define nord13 #EBCB8B
-#define nord14 #A3BE8C
-#define nord15 #B48EAD
-
-xterm*foreground		: #d8dee9
-xterm*background	    : #2e3440
-xterm*cursorColor	    : #d8dee9
-!xterm*cursorColor	    : #8AE234
-xterm*colorUL			: #366060
-xterm*underlineColor    : #92659a
-xterm*fading			: 35
-xterm*fadeColor			: #4c566a
-
-xterm*color0			: #3b4252
-xterm*color1			: #bf616a
-xterm*color2			: #a3be8c
-xterm*color3			: #ebcb8b
-xterm*color4			: #81a1c1
-xterm*color5			: #b48ead
-xterm*color6			: #88c0d0
-xterm*color7			: #e5e9f0
-xterm*color8			: #4c566a
-xterm*color9			: #bf616a
-xterm*color10			: #a3bE8c
-xterm*color11			: #ebcB8b
-xterm*color12			: #81a1c1
-xterm*color13 			: #b48ead
-xterm*color14 			: #8fbcbb
-xterm*color15 			: #eceff4
-
-xterm*renderFont                : true
-xterm*font						: -xos4-terminus-medium-r-*-*-16-*-*-*-*-*-iso10646-*
-xterm*faceName					: -xos4-terminus-medium-r-*-*-16-*-*-*-*-*-iso10646-*
-xterm*faceSize					: 11
-xterm*loginShell				: true
-! Only select text
-xterm*highlightSelection     	: true
-! Remove trailing spaces
-xterm*trimSelection          	: true
-! remove the additional black border
-XTerm*borderWidth            	: 0
-XTerm*internalBorder         	: 2
-! set TERM env variable to use 256 colors
-XTerm*termName               	: xterm-256color
-! make alt key work normally
-XTerm*vt100.metaSendsEscape  	: true
-! save ~10,000 lines of scrollback
-XTerm*v100.saveLines         	: 10240
-! hide scrollbar
-XTerm*vt100.scrollBar        	: false
-! terminal bell tells the window manager to raise urgent flag
-XTerm*vt100.bellIsUrgent     	: true
-! no bold fonts - just use brighter colors
-XTerm*allowBoldFonts         	: false
-! lightgray+bold = white
-xterm*colorBDMode				: true
-xterm*colorBD					: rgb:fc/fc/fc
-! pressing a key automatically scrolls to the bottom
-XTerm*scrollKey              	: true
-! dont allow terminal to go fullscreen
-XTerm*fullscreen             	: never
-! clicking a line selects only from the current word forward
-XTerm*cutToBeginningOfLine 	    : false
-! and dont include a trailing newline in the selection!
-XTerm*cutNewline            	: false
-! some black magic to change what characters XTerm considers "word delimiters"
-XTerm*charClass                 : 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
-! select word on two clicks
-XTerm*on2Clicks              	: word
-! XTerm*on2Clicks: regex [^ \n()]+
-! select whole line on three clicks
-XTerm*on3Clicks                 : line
-XTerm.selectToClipboard     	: true
-*VT100.Translations				: override \
-    Shift Ctrl<Key>V			: insert-selection(PRIMARY) \n\
-    Shift<Btn1Down>				: select-start() \n\
-    Shift<Btn1Motion>   		: select-extend() \n\
-    Shift<Btn1Up>				: select-end()
-!*ttyModes				    	: erase ^?
-XTerm.vt100.geometry			: 100x35
-xterm*xftAntialias				: true
+xterm*renderFont:				true
+xterm*font:						-xos4-terminus-medium-r-*-*-16-*-*-*-*-*-iso10646-*
+xterm*faceName:					-xos4-terminus-medium-r-*-*-16-*-*-*-*-*-iso10646-*
+xterm*faceSize:					12
+xterm*loginShell:				true
+xterm*highlightSelection:		true
+xterm*trimSelection:			true				
+XTerm*borderWidth:				0					
+XTerm*internalBorder:			2
+XTerm*termName:					xterm-256color
+XTerm*vt100.metaSendsEscape:	true				
+XTerm*v100.saveLines:			10240
+XTerm*vt100.scrollBar:			false
+XTerm*vt100.bellIsUrgent:		true
+XTerm*allowBoldFonts:			false
+xterm*colorBDMode:				true				
+xterm*colorBD:					rgb:fc/fc/fc
+XTerm*scrollKey:				true				
+XTerm*fullscreen:				never				
+XTerm*cutToBeginningOfLine:		false				
+XTerm*cutNewline:				false				
+XTerm*on2Clicks:				word				! select word on two clicks
+! XTerm*on2Clicks:				regex [^ \n()]+
+XTerm*on3Clicks:				line				! select whole line on three clicks
+XTerm.selectToClipboard:		true
+*VT100.Translations:			#override \
+    Shift Ctrl<Key>V:			insert-selection(PRIMARY) \n\
+    Shift<Btn1Down>:			select-start() \n\
+    Shift<Btn1Motion>:			select-extend() \n\
+    Shift<Btn1Up>:				select-end()
+!*ttyModes:						erase ^?
+XTerm.vt100.geometry:			100x35
+xterm*xftAntialias:				true
+XTerm*charClass:				33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48 
 
 ! ------------------------------------------------------------------------------
 ! UXTerm
 ! ------------------------------------------------------------------------------
-UXTerm*termName: xterm-256color
-!UXTerm*cursorColor: white
-UXTerm*VT100.geometry: 100x35
-UXTerm.font: Hack Nerd Font Mono
-UXTerm.faceSize: 16
-UXTerm*dynamicColors: true
-UXTerm*utf8: 2
-UXTerm*eightBitInput: true
-UXTerm*saveLines: 10000
-UXTerm*scrollKey: true
-UXTerm*scrollTtyOutput: false
-UXTerm*scrollBar: false
-UXTerm*rightScrollBar: false
-UXTerm*jumpScroll: true
-UXTerm*multiScroll: true
-UXTerm*toolBar: false
-
-! ------------------------------------------------------------------------------
-! Rofi
-! ------------------------------------------------------------------------------
-!rofi.font: DejaVu Sans Mono Book 12
-!rofi.color-enabled: true
-!rofi.color-window: #2b303b, #2b303b, #2b303b
-!rofi.color-normal: #2b303b, #c0c5ce, #2b303b, #8fa1b3, #2b303b
-!rofi.separator-style: solid
-
-! ------------------------------------------------------------------------------
-! ~/.bin/termbar inside xterm(1)
-! ------------------------------------------------------------------------------
-!termbar*faceName: Hack Nerd Font:style=Bold:size=13 
-!termbar*geometry: 191x1+0+0 
-!termbar*internalBorder: 6 
-!termbar*saveLines: 0 
-!termbar*scrollBar: false 
-!termbar*title: termbar 
-!termbar*foreground: qogir_white 
-!termbar*background: qogir_black 
-!termbar*color1: qogir_red 
-!termbar*color3: qogir_orange
+UXTerm*termName:                xterm-256color
+!UXTerm*cursorColor:            white
+UXTerm*VT100.geometry:          100x35
+UXTerm.faceSize:                16
+UXTerm*dynamicColors:           true
+UXTerm*utf8:                    2
+UXTerm*eightBitInput:           true
+UXTerm*saveLines:               10000
+UXTerm*scrollKey:               true
+UXTerm*scrollTtyOutput:         false
+UXTerm*scrollBar:               false
+UXTerm*rightScrollBar:          false
+UXTerm*jumpScroll:              true
+UXTerm*multiScroll:             true
+UXTerm*toolBar:                 false
 
 !-------------------------------------------------------------------------------
 ! Urxvt
 !-------------------------------------------------------------------------------
+URxvt*loginShell:					true
+URxvt*scrollTtyKeypress:			true
+URxvt*scrollTtyOutput:				false
+URxvt*skipScroll:					true
+
 ! URXVT APPEARANCE
-URxvt.font						:xft:Hack Nerd Font Mono:size=13:antialias=true
-URxvt.boldFont					:xft:Hack Nerd Font Mono-Bold:size=13:antialias=true
-URxvt.italicFont				:xft:Hack Nerd Font Mono-Italic:size=13:antialias=true
-URxvt.boldItalicFont			:xft:Hack-BoldItalic:size=13:antialias=true
-URxvt.allow_bold:       		  true
-URxvt.letterSpace: 				  -1
-URxvt.lineSpace: 				  0
-URxvt.geometry:                   100x35
-URxvt.internalBorder:             0
-URxvt.cursorBlink:                false
-URxvt.cursorUnderline:            false
-URxvt.saveline:                   32768
-URxvt.scrollBar:                  false
-URxvt.scrollBar_right:            true
-URxvt.scrollBar_floating:         false
-URxvt.scrollstyle:                plain
-URxvt.urgentOnBell:               false
-URxvt.depth:                      32
-URxvt.iso14755:                   false
-URxvt.iconFile:                   /usr/share/icons/High-Delight/apps/utilities-terminal.svg
+!URxvt.font:							xft:JetBrainsMono Nerd Font Mono:style:Regular:size=13:antialias=true
+URxvt.font:							xft:Hack Nerd Font Mono:style=Regular:size=13:antialias=true,xft:JetBrainsMono Nerd Font Mono:style:Regular:size=13:antialias=true
+URxvt.boldFont:						xft:Hack NF:style=Bold:size=13:antialias=true
+URxvt.italicFont:					xft:Hack NF:style=Italic:size=13:antialias=true
+URxvt.boldItalicFont:				xft:Hack NF:style=Bold Italic:size=13:antialias=true
+URxvt.allow_bold:					true
+URxvt.letterSpace:					-1
+URxvt.lineSpace:					0
+!URxvt.geometry:					100x35
+URxvt.internalBorder:				5
+URxvt.cursorBlink:					false
+URxvt.cursorUnderline:				false
+URxvt.saveline:						32768
+URxvt.scrollBar:					false
+URxvt.scrollBar_right:				true
+URxvt.scrollBar_floating:			false
+URxvt.scrollstyle:					plain
+URxvt.urgentOnBell:					false
+URxvt.depth:						24
+URxvt.iso14755:						false
+URxvt.iconFile:						/usr/share/icons/High-Delight/apps/utilities-terminal.svg
 
 ! URXVT EXTENSIONS
-URxvt.perl-ext-common:            default,clipboard,keyboard-select,url-select,tabbedex
-
-URxvt.tabbedex.no-tabbedex-keys:  yes
-URxvt.tabbedex.new-button:        false
-URXvt.tabbedex.reopen-on-close:   yes
-URxvt.tabbedex.autohide:          yes
-
-URxvt.tabbedex.tabbar-fg:         1
-URxvt.tabbedex.tabbar-bg:         0
-URxvt.tabbedex.tab-fg:            4
-URxvt.tabbedex.tab-bg:            0
-URxvt.tabbedex.bell-fg:           0
-URxvt.tabbedex.bell-bg:           0
-URxvt.tabbedex.bell-tab-fg:       0
-URxvt.tabbedex.bell-tab-bg:       0
-URxvt.tabbedex.title-fg:          7
-URxvt.tabbedex.title-bg:          0
-
-URxvt.keysym.Control-Shift-T:     perl:tabbedex:new_tab
-URxvt.keysym.Control-Shift-R:     perl:tabbedex:rename_tab
-URxvt.keysym.Control-Shift-W:     perl:tabbedex:kill_tab
-!URxvt.keysym.Control-Shift-Next:  perl:tabbedex:move_tab_right
-!URxvt.keysym.Control-Shift-Prior: perl:tabbedex:move_tab_left
+URxvt.perl-ext-common:				default,clipboard,keyboard-select,url-select,tabbedex
+URxvt.tabbedex.no-tabbedex-keys:	yes
+URxvt.tabbedex.new-button:			false
+URXvt.tabbedex.reopen-on-close:		yes
+URxvt.tabbedex.autohide:			yes
+URxvt.tabbedex.tabbar-fg:			1
+URxvt.tabbedex.tabbar-bg:			0
+URxvt.tabbedex.tab-fg:				4
+URxvt.tabbedex.tab-bg:				0
+URxvt.tabbedex.bell-fg:				0
+URxvt.tabbedex.bell-bg:				0
+URxvt.tabbedex.bell-tab-fg:       	0
+URxvt.tabbedex.bell-tab-bg:       	0
+URxvt.tabbedex.title-fg:          	7
+URxvt.tabbedex.title-bg:          	0
+URxvt.keysym.Control-Shift-T:     	perl:tabbedex:new_tab
+URxvt.keysym.Control-Shift-R:     	perl:tabbedex:rename_tab
+URxvt.keysym.Control-Shift-W:     	perl:tabbedex:kill_tab
+!URxvt.keysym.Control-Shift-Next:  	perl:tabbedex:move_tab_right
+!URxvt.keysym.Control-Shift-Prior: 	perl:tabbedex:move_tab_left
 URxvt.keysym.Control-Shift-Right: 	perl:tabbedex:next_tab
-URxvt.keysym.Control-Shift-Left: 	perl:tabbedex:prev_tab
+URxvt.keysym.Control-Shift-Left:  	perl:tabbedex:prev_tab
+URxvt.clipboard.copycmd:          	xclip -i -selection clipboard
+URxvt.clipboard.pastecmd:         	xclip -o -selection clipboard
+URxvt.keysym.M-c:                 	perl:clipboard:copy
+URxvt.keysym.M-v:                 	perl:clipboard:paste
+URxvt.keysym.M-Escape:            	perl:keyboard-select:activate
+URxvt.keysym.M-s:                 	perl:keyboard-select:search
+URxvt.urlLauncher:                	luakit
+URxvt.underlineURLs:              	true
+URxvt.urlButton:                  	1
 
+! URXVT COLOR SCHEME
 
-URxvt.clipboard.copycmd:          xclip -i -selection clipboard
-URxvt.clipboard.pastecmd:         xclip -o -selection clipboard
-URxvt.keysym.M-c:                 perl:clipboard:copy
-URxvt.keysym.M-v:                 perl:clipboard:paste
-URxvt.keysym.M-Escape:            perl:keyboard-select:activate
-URxvt.keysym.M-s:                 perl:keyboard-select:search
+! Nord-ish:
+urxvt*foreground:					#d8dee9
+!urxvt*background:					[95]#2e3440
+urxvt*background:					#2e3440
+urxvt*cursorColor:					#d8dee9
+urxvt*color0:			 			#3b4252
+urxvt*color1:						#bf616a
+urxvt*color2:						#a3be8c
+urxvt*color3:						#ebcb8b
+urxvt*color4:						#81a1c1
+urxvt*color5:						#b48ead
+urxvt*color6:						#88c0d0
+urxvt*color7:						#e5e9f0
+urxvt*color8:						#4c566a
+urxvt*color9:						#bf616a
+urxvt*color10:						#a3bE8c
+urxvt*color11:						#ebcB8b
+urxvt*color12:						#81a1c1
+urxvt*color13:						#b48ead
+urxvt*color14:						#8fbcbb
+urxvt*color15:						#eceff4
+URxvt*colorUL:  					yellow
+URxvt*underlineColor: 				#b48ead
 
-URxvt.urlLauncher:                vimb
-URxvt.underlineURLs:              true
-URxvt.urlButton:                  1
-
-urxvt*foreground:		#d8dee9
-urxvt*background:		[95]#2e3440
-urxvt*cursorColor:		#d8dee9
-urxvt*color0	:#3b4252
-urxvt*color1	:#bf616a
-urxvt*color2	:#a3be8c
-urxvt*color3	:#ebcb8b
-urxvt*color4	:#81a1c1
-urxvt*color5	:#b48ead
-urxvt*color6	:#88c0d0
-urxvt*color7	:#e5e9f0
-urxvt*color8	:#4c566a
-urxvt*color9	:#bf616a
-urxvt*color10	:#a3bE8c
-urxvt*color11	:#ebcB8b
-urxvt*color12	:#81a1c1
-urxvt*color13 	:#b48ead
-urxvt*color14 	:#8fbcbb
-urxvt*color15 	:#eceff4
+! Dracula
+!urxvt*.foreground:					#F8F8F2
+!urxvt*.background:					#282A36
+!urxvt*.color0:						#000000
+!urxvt*.color1:						#FF5555
+!urxvt*.color2:						#50FA7B
+!urxvt*.color3:						#F1FA8C
+!urxvt*.color4:						#BD93F9
+!urxvt*.color5:						#FF79C6
+!urxvt*.color6:						#8BE9FD
+!urxvt*.color7:						#BFBFBF
+!urxvt*.color8:						#4D4D4D
+!urxvt*.color9:						#FF6E67
+!urxvt*.color10:					#5AF78E
+!urxvt*.color11:					#F4F99D
+!urxvt*.color12:					#CAA9FA
+!urxvt*.color13:					#FF92D0
+!urxvt*.color14:					#9AEDFE
+!urxvt*.color15:					#E6E6E6
+!URxvt*colorUL:  					yellow
+!URxvt*underlineColor: 				#b48ead
+	
+! ------------------------------------------------------------------------------
+! ~/.bin/termbar inside xterm(1)
+! ------------------------------------------------------------------------------
+!termbar*faceName: 					Hack Nerd Font:style=Bold:size=13 
+!termbar*geometry: 					191x1+0+0 
+!termbar*internalBorder: 			6 
+!termbar*saveLines: 				0 
+!termbar*scrollBar: 				false 
+!termbar*title: 					termbar 
+!termbar*foreground: 				qogir_white 
+!termbar*background: 				qogir_black 
+!termbar*color1: 					qogir_red 
+!termbar*color3: 					qogir_orange

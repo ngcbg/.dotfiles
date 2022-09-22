@@ -5,6 +5,18 @@
 #Rofi
 super + r
     rofi -show run
+    
+# Rofi-sidebar DRUN    
+super + c
+	rofi -config ~/.config/rofi/config.sidebar.rasi -show drun
+	
+# Rofi - show window
+super + w
+	rofi -modi window -config ~/.config/rofi/config -show window
+	
+#dmenu
+super + shift + d
+	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
 
 #alt + Tab    
 #rofi -modi window -config ~/.config/rofi/config -show window    
@@ -19,7 +31,7 @@ super + alt + e
 
 #arcolinux-logout
 super + x
-    arcolinux-logout
+    archlinux-logout
 
 #Quit CWM
 super + z
@@ -46,10 +58,6 @@ super + Escape
 super + KP_Enter
 	kitty
 
-#dmenu
-super + w
-	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
-
 #reload sxhkd:
 super + shift + s
 	pkill -USR1 -x sxhkd
@@ -57,10 +65,18 @@ super + shift + s
 #Firefox
 ctrl + alt + f
     firefox
+    
+#Geany
+ctrl + alt + g
+    geany     
+
+#Chromium
+ctrl + alt + c
+    chromium 
 
 #Reload CWM conf???
-ctrl + alt + r
-    reload
+#ctrl + alt + r
+#    reload
     
 #Picom Toggle
 ctrl + alt + p
@@ -94,13 +110,13 @@ ctrl + Print
 ctrl + shift + Print
      gnome-screenshot -i
      
-     #Raises volume
+#Raises volume
 XF86AudioRaiseVolume
-    amixer set Master 10%+
+    amixer set Master 5%+
 
 #Lowers volume
 XF86AudioLowerVolume
-    amixer set Master 10%-
+    amixer set Master 5%-
 
 #Mute
 XF86AudioMute
@@ -172,5 +188,5 @@ ctrl + alt + o
     ~/.bin/picom-toggle.sh
 
 # Xcompmgr togle
-ctrl + alt + i
-    ~/.bin/xcompmgr.sh
+#ctrl + alt + i
+#    ~/.bin/xcompmgr.sh

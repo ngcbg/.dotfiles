@@ -1,0 +1,94 @@
+# Homepage that vimb opens if started without a URI.
+#set home-page=about:blank
+set home-page=https://www.startpage.com/search/?q=%s
+
+# Downloads
+set download-path=~/Downloads
+
+# Command with placeholder '%s'
+set editor-command=geany -f %s
+#set editor-command=vim -f %s
+
+# If enabled the inputbox will be hidden whenever it contains no text.
+set input-autohide=true
+
+# Enable or disable the spell checking feature.
+set spell-checking=true
+set spell-checking-languages=en,bg
+
+# Enable or disable support for WebGL on pages.
+#set webgl=true
+
+# While typing a search command, show where the pattern typed so far matches.
+set incsearch=true
+
+# The font family to use as the default for content that does not specify a
+# font.
+set default-font=DejaVu Sans
+
+# The font family used as the default for content using monospace font.
+set monospace-font=DejaVu Sans Mono
+
+# The font family used as the default for content using sans-serif font.
+set sans-serif-font=DejaVu Sans
+
+# The font family used as the default for content using serif font.
+set serif-font=DejaVu Serif
+
+# The default font size used to display text.
+set font-size=16
+
+# Default font size for the monospace font.
+set monospace-font-size=13
+
+# Default Full-Content zoom level in percent. Default is 100.
+set default-zoom=120
+
+# Shortcuts allow the opening of an URI built up from a named template with
+# additional parameters.
+shortcut-add du=https://duckduckgo.com/?q=$0
+shortcut-add di=http://dict.cc/?s=$0
+shortcut-add go=https://encrypted.google.com/search?q=$0
+shortcut-add yt=http://www.youtube.com/results?search_query=$0
+shortcut-add st=https://www.startpage.com/do/dsearch?query=$0
+
+# Set the shortcut as the default, that is the shortcut to be used if no
+# shortcut is given and the string to open is not an URI.
+shortcut-default st
+
+# Map page zoom in normal mode to keys commonly used across applications
+# + (zoom in), - (zoom out), = (zoom reset)
+nmap + zI
+nmap - zO
+nmap = zz
+
+# GUI color settings
+# Color scheme: Base16 Eighties (https://github.com/chriskempson/base16)
+set completion-css=color:#d3d0c8;background-color:#393939;font:12pt DejaVu Sans Mono;
+set completion-hover-css=color:#d3d0c8;background-color:#393939;font:12pt DejaVu Sans Mono;
+set completion-selected-css=color:#d3d0c8;background-color:#515151;font:12pt DejaVu Sans Mono;
+set input-css=color:#d3d0c8;background-color:#393939;font:12pt DejaVu Sans Mono;
+set input-error-css=color:#f2777a;background-color:#393939;font:12pt DejaVu Sans Mono;
+set status-css=color:#ffcc66;background-color:#393939;font:12pt DejaVu Sans Mono;
+set status-ssl-css=color:#99cc99;background-color:#393939;font:12pt DejaVu Sans Mono;
+set status-ssl-invalid-css=color:#f2777a;background-color:#393939;font:12pt DejaVu Sans Mono;
+
+# SSL
+set strict-ssl=false
+
+# JS
+set javascript-can-access-clipboard=off
+set javascript-can-open-windows-automatically=off
+
+# UI
+#set hintkeys=asdfglkjh
+set stylesheet=on
+set smooth-scrolling=on
+
+# Webkit
+set hardware-acceleration-policy=ondemand
+#set defaultencoding=utf-8
+set html5-database=on
+set html5-local-storage=on
+set images=on
+set webgl=true

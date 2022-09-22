@@ -1,0 +1,8 @@
+# Nixieclock settings file
+#    For docs on 'timestring' format, see strftime(3)
+#
+xywh 3515 107 410 42
+above 0
+border 0
+timestring %H:%M %a %b %d
+tickspeed 29.00

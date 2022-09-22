@@ -427,6 +427,10 @@ shell/i/.f
 regex/i/\.(s|asm)$
 	Include=editor
 
+# Python
+shell/i/.py
+	Include=editor
+
 # .so libraries
 regex/\.(so|so\.[0-9\.]*)$
 	View=%view{ascii} /usr/lib/mc/ext.d/misc.sh view so

@@ -7,7 +7,7 @@
 ####################################################################
 # Gaps - Leave room at the top or bottom for status bar
 #If using one polybar 40 10 10 10 - if using a second polybar set to 40 40 10 10
-gap 40 20 15 15
+gap 38 15 15 15
 
 # Font
 fontname "Noto Sans Mono:size=12"
@@ -55,6 +55,7 @@ ignore polybar
 ignore tint2
 ignore conky
 ignore rofi
+ignore plank
 
 # Add the applications you want to appear in the right click menu
 command Thunar		 			thunar

@@ -3,14 +3,15 @@
 #################################
 
 # Daemonize process. Fork to background after initialization. Causes issues with certain (badly-written) drivers.
-# daemon = false
+daemon = true
 
 # Specify the backend to use: `xrender`, `glx`, or `xr_glx_hybrid`.
 # `xrender` is the default one.
-backend = "xrender";
+#backend = "xr_glx_hybrid";
+backend = "glx";
 
 # Enable/disable VSync. Set to false for transparency in VirtualBox.
-vsync = false
+vsync = true
 
 # Enable remote control via D-Bus. See the *D-BUS API* section below for more details.
 # dbus = false
@@ -47,7 +48,7 @@ detect-client-opacity = true;
 # rather than listening to 'FocusIn'/'FocusOut' event. Might have more accuracy, 
 # provided that the WM supports it.
 #
-# use-ewmh-active-win = false
+use-ewmh-active-win = true
 
 # Unredirect all windows if a full-screen opaque window is detected, 
 # to maximize performance for full-screen windows. Known to cause flickering 
@@ -81,7 +82,7 @@ detect-client-leader = true
 # with a 5x5 one you use `--resize-damage 2`, and so on). 
 # May or may not work with *--glx-no-stencil*. Shrinking doesn't function correctly.
 #
-# resize-damage = 1
+resize-damage = 2
 
 # Specify a list of conditions of windows that should be painted with inverted color. 
 # Resource-hogging, and is not well tested.
@@ -93,14 +94,14 @@ detect-client-leader = true
 # practically happened) and may not work with blur-background. 
 # My tests show a 15% performance boost. Recommended.
 #
-# glx-no-stencil = false
+glx-no-stencil = true
 
 # GLX backend: Avoid rebinding pixmap on window damage. 
 # Probably could improve performance on rapid window content changes, 
 # but is known to break things on some drivers (LLVMpipe, xf86-video-intel, etc.).
 # Recommended if it works.
 #
-# glx-no-rebind-pixmap = false
+#glx-no-rebind-pixmap = true
 
 # Disable the use of damage information. 
 # This cause the whole screen to be redrawn everytime, instead of the part of the screen
@@ -108,7 +109,7 @@ detect-client-leader = true
 # The opposing option is use-damage
 #
 # no-use-damage = false
-use-damage = false
+use-damage = true
 
 # Use X Sync fence to sync clients' draw calls, to make sure all draw 
 # calls are finished before picom starts drawing. Needed on nvidia-drivers 
@@ -142,7 +143,7 @@ xrender-sync-fence = true
 # Make transparent windows clip other windows like non-transparent windows do,
 # instead of blending on top of them.
 #
-# transparent-clipping = false
+#transparent-clipping = true
 
 # Set the log file.
 # If *--log-file* is never specified, logs will be written to stderr. 
@@ -175,16 +176,16 @@ log-level = "warn";
 shadow = true;
 
 # The blur radius for shadows, in pixels. (defaults to 12)
-shadow-radius = 12;
+shadow-radius = 12
 
 # The opacity of shadows. (0.0 - 1.0, defaults to 0.75)
 shadow-opacity = 0.75
 
 # The left offset for shadows, in pixels. (defaults to -15)
-shadow-offset-x = -15;
+shadow-offset-x = -15
 
 # The top offset for shadows, in pixels. (defaults to -15)
-shadow-offset-y = -15;
+shadow-offset-y = -15
 
 # Avoid drawing shadows on dock/panel windows. This option is deprecated,
 # you should use the *wintypes* option in your config file instead.
@@ -221,16 +222,18 @@ shadow-offset-y = -15;
 #
 # shadow-exclude = []
 shadow-exclude = [
+#    "bounding_shaped && !rounded_corners",
     "name = 'Notification'",
     "name = 'Polybar'",
     "name = 'Plank'",
-    "name = 'Docky'",
-    "name = 'Kupfer'",
     "name = 'xfce4-notifyd'",
     "name *= 'VLC'",
     "name *= 'compton'",
     "name *= 'Chromium'",
+    "name *= 'Firefox'",
     "name *= 'Chrome'",
+    "name *= 'i3bar'",
+#    "name *= 'Orage'",
     "class_g = 'firefox' && argb",
     "class_g = 'conky'",
     "class_g = 'kupfer'",
@@ -243,6 +246,8 @@ shadow-exclude = [
     "_GTK_FRAME_EXTENTS@:c",
     "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
 ];
+
+#shadow-ignore-shaped = ""
 
 # Add this one too for ...
 # "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
@@ -266,25 +271,34 @@ shadow-exclude = [
 
 # Fade windows in/out when opening/closing and when opacity changes,
 #  unless no-fading-openclose is used.
-fading = false
+fading = true
 
 # Opacity change between steps while fading in. (0.01 - 1.0, defaults to 0.028)
-fade-in-step = 0.03;
+fade-in-step = 0.1;
 
 # Opacity change between steps while fading out. (0.01 - 1.0, defaults to 0.03)
-fade-out-step = 0.03;
+fade-out-step = 0.1;
 
 # The time between steps in fade step, in milliseconds. (> 0, defaults to 10)
 # fade-delta = 10
 
 # Specify a list of conditions of windows that should not be faded.
-# fade-exclude = []
+fade-exclude = [
+	"class_g = 'firefox'",
+	"class_g = 'i3bar'",
+#	"class_g = 'Geany'",
+	"class_g ?= 'Notify-osd'",
+	"_GTK_FRAME_EXTENTS@:c",
+	"window_type = 'dropdown_menu'",
+	"window_type = 'menu'",
+	"window_type = 'popup'"
+];
 
 # Do not fade on window open/close.
-# no-fading-openclose = false
+no-fading-openclose = true
 
 # Do not fade destroyed ARGB windows with WM frame. Workaround of bugs in Openbox, Fluxbox, etc.
-# no-fading-destroyed-argb = false
+no-fading-destroyed-argb = true
 
 #################################
 #    Transparency / Opacity     #
@@ -294,10 +308,10 @@ fade-out-step = 0.03;
 inactive-opacity = 1;
 
 # Opacity of window titlebars and borders. (0.1 - 1.0, disabled by default)
-frame-opacity = 0.75;
+#frame-opacity = 0.75;
 
 # Default opacity for dropdown menus and popup menus. (0.0 - 1.0, defaults to 1.0)
-# menu-opacity = 1.0
+#menu-opacity = 1.0
 
 # Let inactive opacity set by -i override the '_NET_WM_OPACITY' values of windows.
 inactive-opacity-override = false;
@@ -309,7 +323,10 @@ inactive-opacity-override = false;
 # inactive-dim = 0.0
 
 # Specify a list of conditions of windows that should always be considered focused.
-focus-exclude = [ "class_g = 'Cairo-clock'" ];
+focus-exclude = [ 
+	"class_g = 'Cairo-clock'",
+	"class_g = 'Orage'"
+ ];
 
 # Use fixed inactive dim value, instead of adjusting according to window opacity.
 # inactive-dim-fixed = 1.0
@@ -323,12 +340,53 @@ focus-exclude = [ "class_g = 'Cairo-clock'" ];
 #
 # opacity-rule = []
 opacity-rule = [
-  "95:class_g = 'URxvt' && !_NET_WM_STATE@:32a",
+"80:class_g = 'URxvt' && !_NET_WM_STATE@:32a",
+"95:class_g = 'kitty' && !_NET_WM_STATE@:32a",
+"95:class_g = 'URxvt' && focused",
+"75:class_g = 'URxvt' && !focused",
+"95:class_g = 'XTerm' && focused",
+"75:class_g = 'XTerm' && !focused",
+"95:class_g = 'UXTerm' && focused",
+"75:class_g = 'UXTerm' && !focused",
+#"95:class_g = 'geany' && focused",
+"95:class_g = 'Geany' && !focused",
+  "95:class_g = 'kitty' && focused",
+  "75:class_g = 'kitty' && !focused",
+  "95:class_g = 'alacritty' && focused",
+  "75:class_g = 'alacritty' && !focused",
+  "95:class_g = 'i3bar' && !_NET_WM_STATE@:32a",
   "0:_NET_WM_STATE@[0]:32a *= '_NET_WM_STATE_HIDDEN'",
   "0:_NET_WM_STATE@[1]:32a *= '_NET_WM_STATE_HIDDEN'",
   "0:_NET_WM_STATE@[2]:32a *= '_NET_WM_STATE_HIDDEN'",
-  "0:_NET_WM_STATE@[3]:32a *= '_NET_WM_STATE_HIDDEN'",
+  "0:_NET_WM_STATE@[3]:32a *= '_NET_WM_STATE_HIDDEN'",  
   "0:_NET_WM_STATE@[4]:32a *= '_NET_WM_STATE_HIDDEN'"
+];
+
+#################################
+#           Corners             #
+#################################
+
+# Sets the radius of rounded window corners. When > 0, the compositor will
+# round the corners of windows. Does not interact well with
+# `transparent-clipping`.
+#for_window [class="Orage"] corner-radius 20
+corner-radius = 10
+
+# Exclude conditions for rounded corners.
+rounded-corners-exclude = [
+  "window_type = 'dock'",
+  "window_type = 'desktop'",
+  "class_g = 'Vmware-view'",
+  #"class_g = 'Orage'"
+  ]
+round-borders = 1
+round-borders-rule = [
+  "3:window_type = 'unknown'",
+  "3:window_type = 'toolbar'",
+  "3:window_type = 'utility'",
+  "3:window_type = 'splash'",
+  "3:window_type = 'dialog'",
+  "3:window_type = 'normal'"
 ];
 
 #################################
@@ -359,18 +417,26 @@ opacity-rule = [
 
 # Specify the blur convolution kernel, with the following format:
 # example:
-#   blur-kern = "5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1";
+#blur-kern = "5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1";
+#blur-kern = "15,15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,";
 #
-# blur-kern = ''
-blur-kern = "3x3box";
+#blur-kern = ''
+blur-kern = "7x7box";
 
-# Exclude conditions for background blur.
-# blur-background-exclude = []
+## Exclude conditions for background blur.
+## blur-background-exclude = []
 blur-background-exclude = [
   "window_type = 'dock'",
   "window_type = 'desktop'",
   "_GTK_FRAME_EXTENTS@:c"
 ];
+
+blur:
+{
+  method = "kernel";
+  size = 10;
+  deviation = 5.0;
+};
 
 #################################
 # 	  Window type settings		#
@@ -412,6 +478,8 @@ wintypes:
   dock = { shadow = false; }
   dnd = { shadow = false; }
   popup_menu = { opacity = 0.9; }
-  dropdown_menu = { opacity = 0.9; }
+  dropdown_menu = { opacity = 0.9; fade = false; }
   utility       = { shadow = false; };
+#normal = { blur-background = true; }
+#splash = { blur-background = false; };
 };

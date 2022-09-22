@@ -1,4 +1,4 @@
-#####################################################################################################################
+#!/bin/sh
 
 # KEY DEFINITIONS TO REMEMBER
 
@@ -13,11 +13,7 @@
 # Print = PRINT key
 # Tab = TAB key
 set $myTerm kitty
-font pango:Arimo 12
-
-#####################################################################################################################
-#################                          Define the $mod variable/key                             #################
-#####################################################################################################################
+font pango:Hack 12
 
 #Set Alt key
 #set $mod Mod1
@@ -25,31 +21,19 @@ font pango:Arimo 12
 #set Super key
 set $mod Mod4
 
-#####################################################################################################################
-#################                          Define the movements keys - variables                    #################
-#####################################################################################################################
-
-#This is setup for qwerty
-#set $up l
-#set $down k
-#set $left j
-#set $right semicolon
-
 set $up j
 set $down k
 set $left h
 set $right l
 
-#####################################################################################################################
-#################                          Single and Dual screen                                   #################
-#####################################################################################################################
+################# Single and Dual screen #################
 
-exec --no-startup-id xrandr  --output DP-4 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output HDMI-0 --mode 2560x1440 --pos 2560x0 --rotate normal --right-of DP-4
+exec --no-startup-id xrandr --output DP-2 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output DP-0 --mode 2560x1440 --pos 2560x0 --rotate right
 
 # Current setup
 
-set $firstMonitor DP-4
-set $secondMonitor HDMI-0
+set $firstMonitor DP-2
+set $secondMonitor DP-0
 
 workspace 1 output $firstMonitor
 workspace 2 output $secondMonitor
@@ -86,41 +70,60 @@ bindsym $mod+Shift+8 move container to workspace 8; workspace 8
 bindsym $mod+Shift+9 move container to workspace 9; workspace 9
 bindsym $mod+Shift+0 move container to workspace 10; workspace 10
 
-#####################################################################################################################
-#################                          3 menu's in arcolinux                                     #################
-#####################################################################################################################
+# move  container to workspace
+bindsym Control+1 move container to workspace 1
+bindsym Control+2 move container to workspace 2
+bindsym Control+3 move container to workspace 3
+bindsym Control+4 move container to workspace 4
+bindsym Control+5 move container to workspace 5
+bindsym Control+6 move container to workspace 6
+bindsym Control+7 move container to workspace 7
+bindsym Control+8 move container to workspace 8
+bindsym Control+9 move container to workspace 9
+bindsym Control+0 move container to workspace 10
+
+# read 1 character and mark the current window with this character
+bindsym $mod+m exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+
+# read 1 character and go to the window with the character
+bindsym $mod+g exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
+
+bindsym $mod+p exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
+bindsym $mod+F1 [class="firefox"] focus
+bindsym $mod+F2 [class="firefox"] move workspace current
+bindsym $mod+F3 [class="firefox"] move workspace back_and_forth
+workspace_auto_back_and_forth yes
+
+################# 3 menu's #################
 
 # start dmenu
 bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
-
 # Rofi - show open windows
 bindsym $mod+w exec --no-startup-id rofi -modi window -config ~/.config/rofi/config -show window
-
 # start xfce-appfinder
 bindsym mod1+F3 exec --no-startup-id xfce4-appfinder
-
 # start rofi small
 bindsym $mod+r exec --no-startup-id rofi -show run
-
+# start rofi sidebar
+bindsym $mod+c exec --no-startup-id rofi -config ~/.config/rofi/config.sidebar.rasi -show drun
 # ArcoLinux Logout
-bindsym $mod+X exec --no-startup-id arcolinux-logout
+bindsym $mod+X exec --no-startup-id archlinux-logout
+# Finder
+bindsym Control+mod1+k exec --no-startup-id rofi -config ~/.config/rofi/config.sidebar2.rasi -show find -modi find:~/.local/share/rofi/finder.sh
+bindsym Control+Tab exec --no-startup-id ~/.bin/at.sh
+bindsym Control+mod1+s exec --no-startup-id ~/.bin/dmenu_hist.sh
+bindsym Control+mod1+m exec --no-startup-id ~/.bin/dmenu_man.sh
 
-#####################################################################################################################
-#################                          reload changed configuration and close window            #################
-#####################################################################################################################
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# restart i3 inplace
 bindsym $mod+Shift+r restart
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
-
 # kill focused window
 bindsym $mod+q kill
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-#####################################################################################################################
-#################                          Moving around in i3                                      #################
-#####################################################################################################################
+################# Moving around in i3 #################
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -145,6 +148,7 @@ bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
+bindsym mod1+control+a move container to workspace back_and_forth; workspace back_and_forth
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -156,19 +160,18 @@ bindsym $mod+Shift+Right move right
 workspace_auto_back_and_forth yes
 bindsym mod1+Tab workspace next
 bindsym mod1+q exec --no-startup-id skippy-xd --activate-window-picker
-bindsym mod1+control+a move container to workspace back_and_forth; workspace back_and_forth
 bindsym $mod+Tab workspace back_and_forth
 
 #navigate workspaces next / previous
 bindsym mod1+Control+Right workspace next
 bindsym mod1+Control+Left workspace prev
+bindsym mod1+Control+$right workspace next
+bindsym mod1+Control+$left workspace prev
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
-#####################################################################################################################
-#################                          Tiling parameters                                        #################
-#####################################################################################################################
+################# Tiling parameters #################
 
 # orientation for new workspaces
 default_orientation horizontal
@@ -192,35 +195,34 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-bindsym $mod+c focus child
+#bindsym $mod+c focus child
 
-#####################################################################################################################
-#################                          assign applications to workspaces                       #################
-#####################################################################################################################
+################# assign applications to workspaces #################
 
 # Assign application to start on a specific workspace
-# you can find the class with the program xprop
+# you can find the class with xprop
 
 # Workspace 1
 assign [class="Firefox"]										                    → 1
 assign [class="Geany"] 								                                → 1
-assign [class="Thunar"]																→ 1
+#assign [class="Pcmanfm"]													        → 1
+#assign [class="Thunar"]														    → 1
 
-# Workspace 2 text editor related
-assign [class="Chromium"]                                       				    → 2
-assign [class="Pcmanfm"]													        → 2
-assign [class="Notepadqq"]						                                    → 2
+# Workspace 2 
+assign [class="Chromium"]                                       				    → 3
+assign [class="Pcmanfm"]													        → 3
+assign [class="Notepadqq"]						                                    → 3
 
 # Workspace 3 Inkscape
-#assign [class="Inkscape"]                                                          → 3
+#assign [class="Inkscape"]                                                          → 4
 
 # Workspace 4 Gimp
 #assign [class="Gimp"]                                                              → 4
 
 # Workspace 5 Images and meld
-assign [class="ristretto|Ristretto|shotwell|Shotwell|Xviewer|Nitrogen"]             → 5
-assign [class="feh|gthumb|Gthumb|eog|Eog|Pinta|pixeluvo|Pixeluvo"]                  → 5
-assign [class="Meld"]                                                               → 5
+#assign [class="ristretto|Ristretto|shotwell|Shotwell|Xviewer|Nitrogen"]            → 5
+#assign [class="feh|gthumb|Gthumb|eog|Eog|Pinta|pixeluvo|Pixeluvo"]                 → 5
+#assign [class="Meld"]                                                              → 5
 assign [class="Gimp"]                                                               → 5
 
 # Workspace 6 all video related software
@@ -233,56 +235,55 @@ assign [class="Vmplayer|VirtualBox"]						    					→ 7
 #assign [class="Nemo|Thunar|Caja|nautilus|Nautilus"]                                → 8
 
 # Workspace 9 Video related
-assign [class="smplayer|vlc"]	                                                    → 9
+#assign [class="smplayer|vlc"]	                                                    → 9
 
 # Workspace 10 music related
-#assign [class="Spotify|spotify"]                                                   → 10
-assign [class="Audacious|audacious"]												→ 10
+assign [class="Spotify|spotify"]                                                    → 10
+assign [class="Audacious|audacious"]                                                → 10
 #fix for spotify not moving to workspace 10
 #for_window [class="Audacious"] move to workspace 10
 
-#####################################################################################################################
-#################           autostart   -    execute applications at boot time                      #################
-#####################################################################################################################
-
+################# execute applications at boot #################
 # USER APPLICATIONS TO START AT BOOT
 
 # Autotiling
 exec_always --no-startup-id autotiling
 
-#Authentication dialog
 exec --no-startup-id setxkbmap -layout us,bg -variant ,phonetic -option grp:alt_shift_toggle
-exec_always --no-startup-id numlockx on
-exec --no-startup-id xrdb -merge ~/.Xresources
+exec_always --no-startup-id numlockx on &
+exec_always --no-startup-id . ~/bashrc
+exec --no-startup-id pgrep urxvtd 2> /dev/null || urxvtd -q -o -f &
+exec --no-startup-id xrdb -merge ~/.Xresources &
 exec --no-startup-id xset b off
-exec_always --no-startup-id picom --config ~/picom.NGC &
+exec_always --no-startup-id picom -b --vsync-use-glfinish --experimental-backends --config ~/picom.NGC &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id dunst &
 exec --no-startup-id xfce4-power-manager --daemon &
-#exec --no-startup-id pamac-tray
-exec --no-startup-id nm-applet
-exec --no-startup-id volumeicon
-#exec --no-startup-id feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
-#exec --no-startup-id /home/ngc/.fehbg
+exec --no-startup-id nm-applet &
+exec --no-startup-id volumeicon &
 exec --no-startup-id /home/ngc/.bin/nitro-i3.sh
-exec_always /home/ngc/.bin/i3-startup.sh
+exec --no-startup-id /home/ngc/.bin/i3-startup.sh
+exec --no-startup-id /usr/bin/autocutsel & 
 #exec_always --no-startup-id nice polybar -c /home/ngc/.config/polybar/new-polybar mainbar-i3 >>/tmp/polybar_i3.log 2>&1 & disown
-exec_always ~/.config/polybar/launch.sh
-exec_always --no-startup-id /usr/bin/sct 5500 1>/dev/null &
-exec_always --no-startup-id skippy-xd --start-daemon 2&>1 & disown
+#exec_always ~/.config/polybar/launch.sh
+exec_always --no-startup-id /usr/bin/xsct 6000 1>/dev/null &
+#exec_always --no-startup-id skippy-xd --start-daemon 2&>1 & disown
 
-#####################################################################################################################
-#################                          applications keyboard shortcuts                          #################
-#####################################################################################################################
+################# keyboard shortcuts #################
 
 bindsym $mod+Return exec $MyTerm;focus
-bindsym $mod+t exec urxvt;focus
+bindsym $mod+t exec urxvtc;focus
 bindsym $mod+e exec thunar;focus
 bindsym $mod+KP_Enter exec $MyTerm;focus
 bindsym F12 exec --no-startup-id xfce4-terminal --drop-down; focus
 
 bindsym control+mod1+f exec --no-startup-id firefox;focus
-bindsym control+mod1+g exec --no-startup-id chromium;focus
+bindsym control+mod1+g exec --no-startup-id geany;focus
+bindsym control+mod1+c exec --no-startup-id chromium;focus
+bindsym control+mod1+w exec --no-startup-id dmenufm;focus
+bindsym control+mod1+e exec --no-startup-id pcmanfm;focus
+bindsym control+mod1+b exec --no-startup-id luakit;focus
+bindsym control+mod1+i exec --no-startup-id ~/.bin/dm_search.sh
 
 bindsym control+mod1+o exec --no-startup-id ~/.bin/picom-toggle.sh
 
@@ -294,23 +295,20 @@ for_window [class="Audacious"] focus
 # bar toggle, hide or show
 bindsym $mod+b bar mode toggle
 
-#####################################################################################################################
-#################                          screenshots                                              #################
-#####################################################################################################################
+################# screenshots #################
 
 bindsym Print exec --no-startup-id scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
 bindsym Control+Print exec --no-startup-id xfce4-screenshooter
 bindsym Control+Shift+Print exec --no-startup-id gnome-screenshot -i
 #bindsym shift+Print exec --no-startup-id shutter
 
-#####################################################################################################################
-#################                          floating or tiled                                        #################
-#####################################################################################################################
+################# floating or tiled #################
 
 #floating enabled from some programs - find with xprop
 
 for_window [class="Arcolinux-welcome-app.py"] floating enable
 for_window [class="Arcolinux-tweak-tool.py"] floating enable
+for_window [class="Orage"] floating enable
 for_window [class="Bleachbit"] floating disable
 for_window [class="Blueberry.py"] floating enable
 for_window [class="Brasero"] floating disable
@@ -346,57 +344,39 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="^Preferences$"] floating enable
 for_window [window_role="setup"] floating enable
 
-#####################################################################################################################
-#################                          audio settings                                           #################
-#####################################################################################################################
+################# audio settings #################
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D pulse sset Master '5%+'"
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D pulse sset Master '5%-'"
 bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse set Master toggle"
-#https://github.com/acrisci/playerctl/
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioStop exec --no-startup-id playerctl stop
 
-#####################################################################################################################
-#################                          Popups  control                                          #################
-#####################################################################################################################
-
 #Popups during fullscreen mode
 popup_during_fullscreen smart
 
-#####################################################################################################################
-#################                          border control                                           #################
-#####################################################################################################################
-
-# Border control
-hide_edge_borders both
+################# borders #################
+#hide_edge_borders both
 bindsym $mod+shift+b exec --no-startup-id i3-msg border toggle
 
 #changing border style
-#super+t in arcolinux is starting terminal
-#bindsym $mod+t border normal
+bindsym $mod+i border normal
 bindsym $mod+y border 1pixel
 bindsym $mod+u border none
 
-#new_window pixel 1
-new_window normal
-#new_window none
+default_border pixel 2
+default_floating_border pixel 2
+for_window [class="Orage"] border pixel 0
 
-#new_float pixel 1
-new_float normal
-#new_float none
+################# i3 gaps #################
 
-#####################################################################################################################
-#################                          i3 gaps next                                             #################
-#####################################################################################################################
-
-for_window [class="^.*"] border pixel 2
+#for_window [class="^.*"] border pixel 2
 gaps inner 10
-gaps outer 10
+gaps outer 5
 #smart_gaps on
-smart_borders on
+#smart_borders on
 
 # i3 gaps change  
 
@@ -438,12 +418,9 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-#####################################################################################################################
-#################                          Modes	 	                                            #################
-#####################################################################################################################
+################# Modes #################
 
 #Press ctrl+alt+x - check toolbar for next choices
-
 bindsym control+mod1+X mode "$mode_system"
 
 set $mode_system System (k) lock, (l) logout, (u) suspend, (h) hibernate, (r) reboot, (s) shutdown
@@ -461,7 +438,6 @@ mode "$mode_system" {
 }
 
 # resize window (you can also use the mouse for that)
-
 bindsym $mod+Control+r mode "resize"
 
 mode "resize" {
@@ -472,92 +448,89 @@ mode "resize" {
         bindsym $right      resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Left        resize grow width 10 px or 10 ppt
         bindsym Down        resize grow height 10 px or 10 ppt
         bindsym Up          resize shrink height 10 px or 10 ppt
-        bindsym Right       resize grow width 10 px or 10 ppt
+        bindsym Right       resize shrink width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
-#####################################################################################################################
-#################                          bar appearance                                           #################
-#####################################################################################################################
+bindsym control+mod1+r mode "$mode_autorandr"
+
+set $mode_autorandr Autorandr (d)ocked, (m)obile, (b)oth
+mode "$mode_autorandr"  {
+        bindsym d exec --no-startup-id autorandr -l docked, mode "default"        
+        bindsym m exec --no-startup-id autorandr -l mobile, mode "default"         
+        bindsym b exec --no-startup-id autorandr -l both, mode "default"
+        #exit resize mode: Enter or Escape         
+        bindsym Return mode "default"         
+        bindsym Escape mode "default"   
+}
+
+################# bar #################
 
 bar {
 
-    height 28
-    workspace_buttons yes
-    font pango:Noto Sans 11
+	bindsym button3 exec --no-startup-id jgmenu_run
+    #height 26
+    #workspace_buttons yes
+    font pango:DejaVu Sans Mono, FontAwesome 11
 
-    ##position top
-    position bottom
+    position top
 
-    ##system icons
-    tray_output none
-    ##tray_output $firstMonitor
-    ##tray_output $secondMonitor
+    #system icons
+    #tray_output none
+    tray_output $firstMonitor
+    #tray_output $secondMonitor
 
-    ## OPTION 1 : i3status
-
-    ## type status_command i3status without the config file and
-    ## you will get the standard i3status bar
-    ## Second one is the standard statusbar with my personal settings
-
-    ##status_command i3status
+    # OPTION 1 : i3status
+    #status_command i3status
     #status_command i3status -c ~/.config/i3/i3status.conf
-
-    ## OPTION 2 : i3blocks
-
-    ## https://github.com/vivien/i3blocks
-    ## another way to provide text in the statusbar
-    ## put hastag in front if not installed
-
+	status_command /usr/bin/i3status-rs /home/ngc/.config/i3status-rust/config.toml
+	
+    # OPTION 2 : i3blocks
     #status_command i3blocks
     #status_command i3blocks -c ~/.config/i3/i3blocks.conf
     #status_command i3blocks -c ~/.config/i3/i3blocks-rainbow.conf
     #status_command i3blocks -c ~/.config/i3/i3blocks-original.conf
-    status_command i3blocks -c ~/.config/i3/i3blocks-awesome.conf
+    #status_command i3blocks -c ~/.config/i3/i3blocks-awesome.conf
 
     ## OPTION 3 : conky
-
-    ## documentation : https://i3wm.org/docs/user-contributed/conky-i3bar.html
     #status_command ~/.config/i3/start-conky-i3statusbar.sh
 
-    ## i3 bar colors
-    ## variable border background Text
+    # i3 bar colors
+    # variable border background Text
 
     colors {
-        background #2F2F2F
+        #background #3B4252
+        background #2C3A4E
         statusline #eeeeee
         separator  #666666
 
-        ## colorclass           border  backgr. text
-        focused_workspace     #a9a9a9 #5f676a #eeeeee
-        active_workspace      #a9a9a9 #5f676a #eeeeee
-        inactive_workspace    #a9a9a9 #222222 #a9a9a9
-        urgent_workspace      #a9a9a9 #d42121 #FFFFFF
+        ### colorclass		border  backgr. text
+        focused_workspace	#a9a9a9 #F08080 #000000
+        active_workspace	#a9a9a9 #74CEB8 #646CF2
+        inactive_workspace	#a9a9a9 #2C3A4E #FFFFFF
+        urgent_workspace	#a9a9a9 #d42121 #FFFFFF
+        binding_mode		#2f343a #900000 #ffffff
         }
 
     }
 
-    #Theme name : ArcoLinux Default
-
     # Window color settings
-    # class                 border  backgr. text    indicator
-    client.focused          #6790EB #6790EB #e5e5e5 #6790EB
-    client.unfocused        #222222 #222222 #aaaaaa #222222
+    # class                 border  backgr. text    indicator child_border
+    client.focused          #F08080 #F08080 #e5e5e5 #6790EB 
+    client.unfocused        #222222 #6790EB #aaaaaa #222222  
     client.focused_inactive #222222 #222222 #a9a9a9 #222222
     client.placeholder      #222222 #222222 #aaaaaa #222222
-    client.urgent           #d42121 #d42121 #f7f7f7 #d42121
+    client.urgent           #CC4E4E #CC4E4E #f7f7f7 #CC4E4E
 
     client.background       #242424
 
-#####################################################################################################################
-#################                          mouse settings                                           #################
-#####################################################################################################################
+################# mouse settings #################
 
 # mouse settings
 # The middle button over a titlebar kills the window
@@ -566,12 +539,7 @@ bar {
 # The middle button and a modifer over any part of the window kills the window
 bindsym --whole-window $mod+button2 kill
 
-# The right button toggles floating
-# bindsym button3 floating toggle
+# Resize with the right button 
 bindsym --whole-window $mod+button4 floating toggle
 #bindsym --whole-window $mod+button5
-
-# The side buttons move the window around
-#bindsym button9 move left
-#bindsym button8 move right
 

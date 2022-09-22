@@ -1,0 +1,112 @@
+#theme = "space-villain"
+theme = "nord-dark"
+icons = "awesome5"
+
+[[block]]
+block = "focused_window"
+max_width = 100
+show_marks = "none"
+
+[[block]]
+block = "disk_space"
+path = "/home/ngc"
+alias = "ngc"
+info_type = "available"
+format = "{icon} /{available}"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+[block.theme_overrides]
+idle_bg = "#3C4D73da"
+idle_fg = "#ffffffda"
+[block.icons_overrides]
+disk_drive = ""
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used} {mem_used_percents}"
+#format_swap = "{swap_used_percents}"
+[block.theme_overrides]
+idle_bg = "#778BB7af"
+idle_fg = "#ffffffda"
+
+[[block]]
+block = "cpu"
+interval = 5
+format = "{utilization}  {frequency}"
+[block.theme_overrides]
+idle_bg = "#3C4D73da"
+idle_fg = "#ffffffda"
+
+[[block]]
+block = "load"
+interval = 5
+format = "{1m}"
+[block.theme_overrides]
+idle_bg = "#778BB7af"
+idle_fg = "#ffffffda"
+
+[[block]]
+block = "temperature"
+collapsed = false
+interval = 10
+format = "{average}"
+chip = "zenpower-pci-00c3"
+inputs = ["Tdie"]
+[block.theme_overrides]
+idle_bg = "#3C4D73da"
+idle_fg = "#ffffffda"
+
+[[block]]
+block = "nvidia_gpu"
+label = " "
+show_utilization = false
+show_memory = false
+show_temperature = true
+interval = 10
+[block.theme_overrides]
+idle_bg = "#778BB7af"
+idle_fg = "#ffffffda"
+
+[[block]]
+block = "pacman"
+interval = 3600
+format = "{pacman} updates"
+format_singular = "{pacman} update"
+format_up_to_date = "Up To Date"
+critical_updates_regex = "(linux|linux-lts|linux-zen|nvidia)"
+# pop-up a menu showing the available updates. Replace wofi with your favourite menu command.
+on_click = "fakeroot pacman -Qu --dbpath /tmp/checkup-db-ngc/ | dmenu"
+[block.theme_overrides]
+idle_bg = "#3C4D73da"
+idle_fg = "#ffffffbf"
+
+[[block]]
+block = "custom"
+command = "curl 'https://wttr.in/?format=1' -s | sed 's/  //'"
+interval = 600
+
+[[block]]
+block = "sound"
+step_width = 1
+[block.theme_overrides]
+idle_bg = "#A57DC2af"
+idle_fg = "#ffffffda"
+
+[[block]]
+block = "music"
+buttons = ["play", "next"]
+interface_name_exclude = ['.*kdeconnect.*', 'mpd']
+
+[[block]]
+block = "time"
+interval = 5
+format = "%a %d/%m %R"
+on_click = "orage"
+[block.theme_overrides]
+idle_bg = "#916BACaf"
+idle_fg = "#ffffffda"
+
+
